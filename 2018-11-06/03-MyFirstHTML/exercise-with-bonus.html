@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <Title>This is my first html in the new GA Tech Bootcamp Class</Title>
+
+    <!-- Style / CSS-->
+    <style>
+        /* Default font for all items */
+        * {
+            font-family: "SF Pro", Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2.forTeacher {
+            color: green;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        table {
+            font-family: "SF Pro", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: rgb(127, 174, 245);
+        }
+
+        /* Bonus lternate way of separating links without line breaks */
+        /* put space between links */
+        a.nav-link {
+            padding: 0px 10px;
+            word-wrap: normal;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<!-- Body is where all displayable content goes-->
+
+<body>
+    <h1>Hello World</h1>
+    <!-- Image Linck-->
+    <img src="https://postpunkmonk.files.wordpress.com/2018/02/shriekback-2017-live.jpg?w=1280&h=960" height=250px
+        width=250px>
+    <br>
+    <!-- New Tab href -->
+    <a href="https://postpunkmonk.com/2018/02/06/shriekback-kickstarter-perilously-still-at-halfway-point/" target="_blank">Open
+        new tab</a>
+    <br>
+    <!-- Bold Href -->
+    <strong><a href="http://www.linck.net">Paul Linck Bold Website</a></strong>
+    <br>
+    <!-- Go nowhere href-->
+    <a href="#">Go No Where</a>
+    <hr>
+
+    <!-- Now for the Bonus Stuff -->
+
+    <!-- Create an Ordered List of How to make a sandwich -->
+    <h2>How to make a sandwich</h2>
+    <ol>
+        <li>Get the bread</li>
+        <li>Get the meat and the cheese</li>
+        <li>Get all condiments</li>
+        <li>Dont forget the pickles</li>
+        <li>Spread condiments on bottom bread</li>
+        <li>Place meat and cheese on bottom bread</li>
+        <li>Place pickles on top</li>
+        <li>Put final piece of bread on top</li>
+    </ol>
+    <hr>
+
+    <!--  * Create an unordered list of 5 bands/musicians you like. -->
+    <h2>Bands I like</h2>
+    <ul>
+        <li>Shriekback</li>
+        <li>Talking Heads</li>
+        <li>Bel Canto</li>
+        <li>Morcheeba</li>
+        <li>Madonna</li>
+    </ul>
+    <hr>
+
+    <!-- * Create a table with 2 columns (animal class and animal name) and 4 rows of animals. -->
+    <!-- Note that the table broder property is no longer supported in HTML5 so use CSS-->
+    <table>
+        <tr>
+            <th>Class</th>
+            <th>Name</th>
+        </tr>
+        <tr>
+            <td>Canine</td>
+            <td>Dog</td>
+        </tr>
+        <tr>
+            <td>Mammal</td>
+            <td>Giraffe</td>
+        </tr>
+        <tr>
+            <td>Feline</td>
+            <td>Cat</td>
+        </tr>
+        <tr>
+            <td>Arachnid</td>
+            <td>Spider</td>
+        </tr>
+    </table>
+    <hr>
+
+    <!-- * Use an alternate way of separating links without line breaks. -->
+    <a class="nav-link" href="https://postpunkmonk.com/2018/02/06/shriekback-kickstarter-perilously-still-at-halfway-point/"
+        target="_blank">Open
+        new tab</a>
+    <strong><a class="nav-link" href="http://www.linck.net">Paul Linck Bold Website</a></strong>
+    <a class="nav-link" href="#">Go No Where</a>
+    <hr>
+
+    <!-- * Embed a Youtube video of your favorite band/musician. -->
+    <h2 class="forTeacher">This one is for you Mr Smith (Coredelle)</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/KMX1mFEmM3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br>
+    <h2>This one wont play since protected (how can we deal with this)?</h2>
+    <iframe type="text/html" width="560" height="315" src="https://www.youtube.com/embed/E1yiQE_aOjM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+
+</body>
+
+</html>
