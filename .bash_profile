@@ -1,4 +1,4 @@
-```#  ---------------------------------------------------------------------------
+#  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
 #
@@ -318,4 +318,4 @@ function prompt {
   export PS2=" => "  
 }
 
-prompt```
+prompt
