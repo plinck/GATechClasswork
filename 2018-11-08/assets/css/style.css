@@ -1,0 +1,87 @@
+/* Default for all elements */
+/* I really want to use SF fonts since that is what apple uses */
+/* But, I am putting the class recommended fonts below my choice so to follow instructions */
+* {
+    font-family: "SF Pro Display", "Helvetica Neue", Georgia,"Times New Roman",Times,serif;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    box-sizing: border-box;
+}
+
+/* Main Body Defaults */
+body {
+    font-family: Georgia,"Times New Roman",Times,serif;
+    background-color: #efeee7;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+/* The main header section */
+header, footer {
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    margin: 0 0 10px 0;
+    background-color: #333333;
+    color: white;
+}
+
+/* the outer container for everything */
+.container {
+    width: 1024;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* float the sections */
+#main-bio,
+#bio-image,
+#contact-info {
+    float: left;
+}
+
+/* Main Bio Text */
+#main-bio {
+    width: 70%;
+    overflow: auto;
+    padding-left: 20px;
+}
+
+/* The Bio Image */
+#bio-image {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+    border: 2px solid black;
+}
+
+/* Contact Info */
+#contact-info {
+    width: 30%;
+}
+
+/* change color of unvisited link */
+a:link {
+    color: #d21034;
+}
+
+h1 {
+    color: #eee;
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+ul {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+/* clear the floats so the rest of the document flows properly */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
