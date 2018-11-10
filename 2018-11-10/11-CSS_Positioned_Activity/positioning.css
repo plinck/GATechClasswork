@@ -1,0 +1,37 @@
+nav {
+    position: fixed;
+    background-color: #eee;
+    color: black;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+section {
+    width: 960;
+    height: auto;
+    margin: 0px 100px 0px 100px;
+}
+
+#relative {
+    position: relative;
+    /*display: inline-block;*/
+    overflow: visible;
+    background-color: #eee;
+    color: black;
+    z-index: 1;
+    text-align: center;
+    padding: 20px 250px 80px 250px;
+    margin: 20px 0px 20px 0px;
+}
+
+#absolute {
+    position: absolute;
+    background-color: #999;
+    width: 160px;
+    color: black;
+    z-index: 2;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+    margin: 4px 0px 0px 300px;
+}
