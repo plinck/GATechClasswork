@@ -15,7 +15,7 @@ section {
 
 #relative {
     position: relative;
-    /*display: inline-block;*/
+    /* This was key to let child go out of bounds I guess, but what are the bounds */
     overflow: visible;
     background-color: #eee;
     color: black;
@@ -28,6 +28,7 @@ section {
 #absolute {
     position: absolute;
     background-color: #999;
+    /* Why did I have to do this - it kept shrking when it got near edge of parent/#relative */
     width: 160px;
     color: black;
     z-index: 2;
