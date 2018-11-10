@@ -1,0 +1,59 @@
+/* Default font for all items */
+* {
+    font-family: "SF Pro", Arial, Helvetica, sans-serif;
+}
+#mainImage {
+    height: 250px;
+    width: 250px;
+    background-color: orange;
+    opacity: 1;
+    top: 0px;
+    left: 0px;
+    margin: 25px;
+    position: relative;
+}
+
+h1 {
+    color: red;
+}
+
+h2.forTeacher {
+    color: green;
+    font-weight: bold;
+    font-style: italic;
+}
+
+table {
+    font-family: "SF Pro", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: rgb(127, 174, 245);
+}
+
+/* Bonus lternate way of separating links without line breaks */
+/* put space between links */
+a.nav-link {
+    padding: 0px 10px;
+    word-wrap: normal;
+    display: inline-block;
+}
