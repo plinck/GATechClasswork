@@ -1,0 +1,91 @@
+<!-- Bootstrap Exercise -->
+
+<!-- Students: 
+ Working with someone closest to you:
+
+    1. Navigate to the Twitter Bootstrap website.
+
+    2. Copy the link to the Bootstrap CSS file into one of your old HTML files.
+
+    3. Look through the Bootstrap CSS or Components list and incorporate at least three Bootstrap elements onto your page.
+
+    4. Slack a screenshot of your page to your section’s channel when you are done.
+
+    5. Hint: First include a link to Bootstrap’s CSS. Then visit the Bootstrap page on CSS or Components. 
+
+  IMPORTANT: If you finish early, let the TAs know so you can be sent to help others around you.
+-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Bootstrap DemoButtons</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <!-- Regular Buttons -->
+  <h1>Here is a non fancy button</h1>
+  <button>Boring Button</button>
+  <button>Boring Button</button>
+
+  <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+  </div>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-light">Light</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+
+  <a class="btn btn-primary" target="_blank" href="#" role="button">New Tab</a>
+  <button class="btn btn-primary" type="submit">Button</button>
+  <input class="btn btn-primary" type="button" value="Input">
+
+  <p></p>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Dropdown button
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+  <p></p>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary active">
+      <input type="radio" name="" id="" autocomplete="off" checked>
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="" id="" autocomplete="off">
+    </label>
+    <label class="btn btn-primary">
+      <input type=" radio" name="" id=" " autocomplete="off ">
+    </label>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
