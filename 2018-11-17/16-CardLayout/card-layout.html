@@ -20,7 +20,7 @@
     <!-- Use bootstrap grid controls to line things up  -->
     <!-- <div class="container-fluid"> -->
     <!-- Sticky top is not working and I do not know why -->
-    <nav class="navbar navbar-light bg-secondary text-white flex-sm-row flex-column">
+    <nav class="navbar navbar-dark bg-dark text-white flex-sm-row flex-column">
         <div class="navbar-header">
             <a class="navbar-brand" hrfef="#">Text Layout</a>
         </div>
@@ -31,38 +31,81 @@
         </ul>
     </nav>
 
+    <!-- <img class="img-fluid" src="275x206-PaulKona.png"> -->
+
+
     <main role="main" class="container">
 
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-8 col-sm-8">
                 <div class="row">
-                    <div class="col-sm-6"></div>
-                    <div class="col-sm-6 justify-content-center text-center">
-                        <p>About Me</p>
-                        <img src="275x206-PaulKona.png" width="150" height="150">
+                    <!-- 1st half of 1st column -->
+                    <div class="col-6 col-sm-6">
+                        <div class="row">
+                            <div class="col-6 col-6-small"></div>
+                            <div class="col-6 col-6-small d-flex justify-content-center">
+                                <div class="container">
+
+                                    <h4 class="text-center">About Me</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2nd Half of 1st column-->
+                    <div class="col-6 col-sm-6">
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- 1st half of 1st column -->
+                    <div class="col-6 col-sm-6">
+                        <div class="row">
+                            <div class="col-6 col-6-small"></div>
+                            <div class="col-6 col-6-small d-flex justify-content-center">
+
+                                <div class="d-flex justify-content-center align-items-center" style="height: 150px; width: 150px; background-color: rgba(0,0,0,0.1);">
+                                    <img class="img-fluid" src="275x206-PaulKona.png" class="img-thumbnail" alt="Paul KONA">
+                                    <!-- <div class="text-center text-info">150px x 150px</div> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd half of first column -->
+                    <div class="col-6 col-sm-6">
+                        <p>Mollit magna ullamco ex ex ut anim consectetur enim excepteur ea sunt laborum. Anim nisi et
+                            minim qui quis ad magna commodo reprehenderit incididunt. Ullamco aliquip incididunt qui
+                            laboris non deserunt nostrud veniam ea dolor minim nostrud ex. Pariatur reprehenderit eu
+                            laboris in minim. Ex commodo ipsum ea veniam Lorem exercitation ea laboris non officia eu
+                            culpa.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-            </div>
 
-            <div class="col-sm-4 justify-content-left">
-                <h2>Card Info</h2>
-                <p>Card Content</p>
+            <div class="col-4 col-sm-4 justify-content-left">
+                <!-- 1st Half of 2nd column-->
+                <div class="col-6 col-sm-6">
+
+                    <!-- Side Card  -->
+                    <div class="card" style="width: 18rem;">
+                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk of the card's content.</p>
+                        </div>
+                    </div>
+                    <!-- end Side Card -->
+                </div>
+
+                <!-- 2nd Half of 2nd column-->
+                <div class="col-6 col-sm-6">
+
+                </div>
+
             </div>
         </div>
-
-        <!-- This is sticky footer, but not covering whole page width -->
-        <footer class="footer">
-            <nav class="navbar navbar-light bg-secondary text-white ">
-                <div class="container">
-                    <div class="navbar-header inline-headers">
-                        <a class="navbar-brand" hrfef="#">Sticky Footer</a>
-                    </div>
-                </div>
-            </nav>
-        </footer>
-
         <!-- End main content section -->
     </main>
 
