@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>16-Card Layout</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Bootstrap Layout -->
+    <!-- Use bootstrap grid controls to line things up  -->
+    <!-- <div class="container-fluid"> -->
+    <!-- Sticky top is not working and I do not know why -->
+    <nav class="navbar navbar-light bg-secondary text-white flex-sm-row flex-column">
+        <div class="navbar-header">
+            <a class="navbar-brand" hrfef="#">Text Layout</a>
+        </div>
+        <ul class="nav flex-sm-row flex-column">
+            <li><a class="p-2 nav-link text-white-50" href="#">Page 1 </a></li>
+            <li><a class="p-2 nav-link text-white" href="#">Page 2 </a></li>
+            <li><a class="p-2 nav-link text-white" href="#">Page 3 </a></li>
+        </ul>
+    </nav>
+
+    <main role="main" class="container">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6 justify-content-center text-center">
+                        <p>About Me</p>
+                        <img src="275x206-PaulKona.png" width="150" height="150">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+            </div>
+
+            <div class="col-sm-4 justify-content-left">
+                <h2>Card Info</h2>
+                <p>Card Content</p>
+            </div>
+        </div>
+
+        <!-- This is sticky footer, but not covering whole page width -->
+        <footer class="footer">
+            <nav class="navbar navbar-light bg-secondary text-white ">
+                <div class="container">
+                    <div class="navbar-header inline-headers">
+                        <a class="navbar-brand" hrfef="#">Sticky Footer</a>
+                    </div>
+                </div>
+            </nav>
+        </footer>
+
+        <!-- End main content section -->
+    </main>
+
+    <!-- This covers whole page while top does not, so I took out of main container -->
+    <!-- fixed bottom  wants to cover entire wdith of page. -->
+    <footer class="footer">
+        <nav class="navbar navbar-light bg-secondary text-white navbar-fixed-bottom">
+            <div class="container justify-content-center">
+                <div class="navbar-header inline-headers">
+                    <h3 class="navbar-brand text-white">Fixed Centered Footer</h3>
+                </div>
+            </div>
+        </nav>
+    </footer>
+
+</body>
