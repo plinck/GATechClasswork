@@ -68,4 +68,24 @@ body {
   .wrapper {
     width: 600px;
   }
+
+  #main-content {
+    /* Positioning */
+    float: center;
+    width: 100%;
+  
+    /* Visual */
+    background: #fff;
+  }
+  
+  #sidebar {
+    /* Positioning */
+    float: center;
+    width: 100%;
+
+  
+    /* Visual */
+    background: #eee;
+  }
+  
 }
