@@ -27,7 +27,7 @@
         /* We occasionally use media queries that go in the other direction (the given screen size or smaller): */
         /* Extra small devices (portrait phones, less than 576px) */
         @media (max-width: 575.98px) {
-            .fullImage {
+            .size-xs-full {
                 width: 100%;
             }
         }
@@ -61,45 +61,96 @@
         </div>
     </nav>
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="page-header">
-                    <h1>About Me</h1>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- Use class="float-sm-left". -->
-                        <!-- This will Float left on viewports sized SM (small) or wider.  -->
-                        <!-- When the viewport is xs, it will add a break in between to stack (edited) -->
-                        <img src="http://placehold.it/150x150" alt="Placeholder" class="float-sm-left mr-sm-3 img-thumbnail fullImage">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim, felis ut dictum
-                            tristique,
-                            nibh erat feugiat libero, sit amet fringilla mauris velit in mi. Duis tempus felis vitae
-                            felis vulputate pretium. Nullam commodo, est ac auctor ornare, eros nisi fringilla sem,
-                            non pulvinar tortor lorem sit amet sem. Aenean quis erat facilisis, porttitor ex cursus,
-                            luctus enim. Curabitur et metus in lacus tristique sagittis et in lorem. Nunc id nisi et
-                            neque fringilla ultricies. Aenean at feugiat elit, a posuere justo. Pellentesque egestas
-                            dolor et nisi venenatis, nec fermentum urna fringilla. Etiam efficitur porta purus, id
-                            posuere sem congue a.
-                        </p>
+    <!-- Simple image with overlay using card -->
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex flex-column align-items-center flex-sm-row justify-content-sm-left">
+                <div class="card bg-dark text-white m-2">
+                    <img class="card-img img-responsive border-0" src="http://placehold.it/275x200" alt="Card image background"
+                        width="275px" height="200px">
+                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end m-0 p-0">
+                        <h4 class="card-title bg-dark text-center p-2">Title</h4>
                     </div>
                 </div>
-            </div>
-            <!--Create Card taking up 4 Columns-->
-            <div class="col-md-4">
-                <div class="card mt-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                <div class="card bg-dark text-white m-2">
+                    <img class="card-img img-responsive border-0" src="http://placehold.it/275x200" alt="Card image background"
+                        width="275px" height="200px">
+                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end m-0 p-0">
+                        <h4 class="card-title bg-dark text-center p-2">Title</h4>
+                    </div>
+                </div>
+                <div class="card bg-dark text-white m-2">
+                    <img class="card-img img-responsive border-0" src="http://placehold.it/275x200" alt="Card image background"
+                        width="275px" height="200px">
+                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end m-0 p-0">
+                        <h4 class="card-title bg-dark text-center p-2">Title</h4>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- End Simple image with overlay using card -->
+
+    <!-- Complex Card Image Overlay -->
+    <div class="row">
+        <div class="card bg-dark text-white">
+            <img class="card-img img-responsive" src="https://images.pexels.com/photos/87840/daisy-pollen-flower-nature-87840.jpeg?cs=srgb&amp;dl=bloom-blossom-close-up-87840.jpg&amp;fm=jpg"
+                alt="Card image" width="500px" height="500px">
+            <div class="card-img-overlay d-flex align-items-center">
+                <div class="row">
+                    <div class="text-left col-12">
+                        <h2 class="card-title w-100 bg-dark">H2 Locations Headline</h2>
+                    </div>
+                    <div class="text-left col-sm-6 col-lg-3">
+                        <p class="card-text ">This is a wider card with supporting text below as a natural
+                            lead-in
+                            to additional content. This content is a little bit longer.</p>
+                        <div class="">
+                            <a href="#" class="btn btn-danger  btn-lg ">CTA to Our Locations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1>About Me</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Use class="float-sm-left". -->
+                    <!-- This will Float left on viewports sized SM (small) or wider.  -->
+                    <!-- When the viewport is xs, it will add a break in between to stack (edited) -->
+                    <img src="http://placehold.it/150x150" alt="Placeholder" class="float-sm-left mr-sm-3 img-thumbnail size-xs-full">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim, felis ut dictum
+                        tristique,
+                        nibh erat feugiat libero, sit amet fringilla mauris velit in mi. Duis tempus felis vitae
+                        felis vulputate pretium. Nullam commodo, est ac auctor ornare, eros nisi fringilla sem,
+                        non pulvinar tortor lorem sit amet sem. Aenean quis erat facilisis, porttitor ex cursus,
+                        luctus enim. Curabitur et metus in lacus tristique sagittis et in lorem. Nunc id nisi et
+                        neque fringilla ultricies. Aenean at feugiat elit, a posuere justo. Pellentesque egestas
+                        dolor et nisi venenatis, nec fermentum urna fringilla. Etiam efficitur porta purus, id
+                        posuere sem congue a.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--Create Card taking up 4 Columns-->
+        <div class="col-md-4">
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <!-- This covers whole page while top does not, so I took out of main container -->
