@@ -13,6 +13,26 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+    <style>
+        /* Example usage: */
+        /* NOT WORKING --
+        @include media-breakpoint-up(sm) {
+            .some-class {
+                display: block;
+            }
+        }
+        */
+
+        /* We occasionally use media queries that go in the other direction (the given screen size or smaller): */
+        /* Extra small devices (portrait phones, less than 576px) */
+        @media (max-width: 575.98px) {
+            .fullImage {
+                width: 100%;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -20,7 +40,7 @@
     <!-- Use bootstrap grid controls to line things up  -->
     <!-- <div class="container-fluid"> -->
     <!-- Sticky top is not working and I do not know why -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <span class="navbar-brand mb-1 h1">Navbar</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,89 +61,53 @@
         </div>
     </nav>
 
-    <!-- <img class="img-fluid" src="275x206-PaulKona.png"> -->
 
-    <main role="main" class="container">
-
+    <div class="container">
         <div class="row">
-            <div class="col-8 col-sm-8">
-                <div class="row">
-                    <!-- 1st half of 1st column -->
-                    <div class="col-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-6 col-6-small"></div>
-                            <div class="col-6 col-6-small d-flex justify-content-center">
-                                <div class="container">
-
-                                    <h5 class="text-center">About Me</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 2nd Half of 1st column-->
-                    <div class="col-6 col-sm-6">
-                    </div>
+            <div class="col-md-8">
+                <div class="page-header">
+                    <h1>About Me</h1>
                 </div>
                 <div class="row">
-                    <!-- 1st half of 1st column -->
-                    <div class="col-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-6 col-6-small"></div>
-                            <div class="col-6 col-6-small d-flex justify-content-center">
-
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img src="http://placehold.it/150x150" alt="Placeholder" class="img-thumbnail">
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2nd half of first column -->
-                    <div class="col-6 col-sm-6">
-                        <p>Mollit magna ullamco ex ex ut anim consectetur enim excepteur ea sunt laborum. Anim nisi et
-                            minim qui quis ad magna commodo reprehenderit incididunt. Ullamco aliquip incididunt qui
-                            laboris non deserunt nostrud veniam ea dolor minim nostrud ex. Pariatur reprehenderit eu
-                            laboris in minim. Ex commodo ipsum ea veniam Lorem exercitation ea laboris non officia eu
-                            culpa.</p>
+                    <div class="col-md-12">
+                        <!-- Use class="float-sm-left". -->
+                        <!-- This will Float left on viewports sized SM (small) or wider.  -->
+                        <!-- When the viewport is xs, it will add a break in between to stack (edited) -->
+                        <img src="http://placehold.it/150x150" alt="Placeholder" class="float-sm-left mr-sm-3 img-thumbnail fullImage">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim, felis ut dictum
+                            tristique,
+                            nibh erat feugiat libero, sit amet fringilla mauris velit in mi. Duis tempus felis vitae
+                            felis vulputate pretium. Nullam commodo, est ac auctor ornare, eros nisi fringilla sem,
+                            non pulvinar tortor lorem sit amet sem. Aenean quis erat facilisis, porttitor ex cursus,
+                            luctus enim. Curabitur et metus in lacus tristique sagittis et in lorem. Nunc id nisi et
+                            neque fringilla ultricies. Aenean at feugiat elit, a posuere justo. Pellentesque egestas
+                            dolor et nisi venenatis, nec fermentum urna fringilla. Etiam efficitur porta purus, id
+                            posuere sem congue a.
+                        </p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-4 col-sm-4 justify-content-left">
-                <!-- 1st Half of 2nd column-->
-                <div class="col-6 col-sm-6">
-
-                    <!-- Side Card  -->
-                    <div class="card" style="width: 18rem;">
-                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
-                        </div>
+            <!--Create Card taking up 4 Columns-->
+            <div class="col-md-4">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
                     </div>
-                    <!-- end Side Card -->
                 </div>
-
-                <!-- 2nd Half of 2nd column-->
-                <div class="col-6 col-sm-6">
-
-                </div>
-
             </div>
         </div>
-        <!-- End main content section -->
-    </main>
+    </div>
 
     <!-- This covers whole page while top does not, so I took out of main container -->
     <!-- fixed bottom  wants to cover entire wdith of page. -->
     <footer class="footer">
         <nav class="navbar navbar-dark bg-dark bg-secondary text-white navbar-fixed-bottom">
             <div class="container justify-content-center">
-                    <span class="navbar-brand mb-1 h1">Fixed Centered Footer</span>
+                <span class="navbar-brand mb-1 h1">Fixed Centered Footer</span>
             </div>
         </nav>
     </footer>
