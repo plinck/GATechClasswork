@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Sushi Prompt - Unsolved</title>
-  </head>
-  <body>
 
-    <script type="text/javascript">
+<head>
+  <meta charset="UTF-8">
+  <title>Sushi Prompt - Unsolved</title>
+</head>
 
-    // Write code here!
+<body>
 
-    </script>
+  <script type="text/javascript">
+    var sushi = "sushi";
 
-  </body>
+    var like = confirm("Do you like " + sushi + "?");
+
+    if (like) {
+      var likedType = prompt("What kind of " + sushi + " do you like");
+      alert("You said you liked: " + likedType);
+
+    } else {
+      alert("You said you did not like: " + sushi);
+
+    }
+  </script>
+
+</body>
+
 </html>

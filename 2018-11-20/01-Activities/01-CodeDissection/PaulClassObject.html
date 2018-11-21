@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Classes and Objects and Arrays</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      Paul Classes Objects Arrays
+    </title>
+  </head>
+  <body>
+    
+    <script type="text/javascript">
+     class Car {
+        constructor(model, color, year) {
+          this.model = model;
+          this.color = color;
+          this.year = year;
+        }
+        get make() {
+          return this.carMake;    // Note this local variable MUST be diff than getter setter
+        }
+        set make(value) {
+          this.carMake = value;
+        }
+
+        drive () {
+          return "I am driving";
+        }
+      };
+
+      var cars = [];
+
+      var car = new Car("Model-S", "Red", 2016);
+      car.make = "Tesla";
+      cars.push(car);
+
+      var car2 = new Car("Civic", "Blue", 2017);
+      car.make = "Honda";
+      cars.push(car2);
+
+      var car3 = new Car("Model-3", "Blue", 2018);
+      car.make = "Model-3";
+      cars.push(car3);
+
+      for (i = 0; i < cars.length; i++) {
+        console.log(cars[i].drive());
+        console.log("make: " + cars[i].make + "\r\n");
+        console.log("model: " + cars[i].model + "\r\n");
+        console.log("color: " + cars[i].color + "\r\n");
+        console.log("year: " + cars[i].year + "\r\n");
+    }  
+
+   </script>
+  </body>
+</html>
+
+
+</body>
+</html>

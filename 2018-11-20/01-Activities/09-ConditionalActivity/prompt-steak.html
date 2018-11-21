@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Steak</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    var foodName = "Steak";
+
+    var youEatThis = confirm("Do you eat " + foodName + "?");
+  
+    if (youEatThis) {
+      document.write("Here’s a " + foodName + " Sandwich! " + "<br>");
+    } else {
+      document.write("Here’s a Tofu Stir-Fry!" + "<br>");
+    }
+
+    var birthYear = prompt("What year were you born?");
+    var age = 2018 - parseInt(birthYear, 10);
+    var age = 2018 - birthYear;
+
+    if (age < 21) {
+      document.write("No Sake for you, you are too young!" + "<br>");
+    } else {
+      document.write("Enjoy you free Sake!" + "<br>");
+    }
+
+
+  </script>
+
+</body>
+
+</html>
