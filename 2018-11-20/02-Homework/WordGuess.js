@@ -1,3 +1,10 @@
+/* **********************************************************************************
+* Class: WordGuess
+* Contains all the functionality to do a hangman-type game
+* Note the use of Capitalizing first letter of each word in a class name
+* in a standard practice in most OO languages like C#, C++, Swift,
+* Java, objective-C etc.
+ ********************************************************************************** */
 class WordGuess {
   constructor(word, guesses) {
     this.nbrWins = 0;
@@ -22,6 +29,7 @@ class WordGuess {
   }
 
   // Make the blank layout of the word
+  //
   makeBlankGuess(word) {
     var text = "";
     for (var member in word) {
@@ -124,88 +132,3 @@ class WordGuess {
     console.log("nbrLettersGuessedIncorrect:" + this.nbrLettersGuessedIncorrect);
   }
 }
-
-// Word Guess
-var wordGuess = new WordGuess("Queen", 5);
-var audioStart = new Audio("sounds/Pacman_Introduction_Music-KP.mp3");
-showState();
-
-console.log("Word to Guess: '" + wordGuess.wordToGuess + "'");
-console.log("Wins: " + wordGuess.wins);
-
-// Get the keyboard input
-document.addEventListener('keyup', function (event) {
-
-  // wait for a spacebar to keep game going if you just finished
-  if (wordGuess.gameInProgress) {
-    // Get the character
-    var charValue = String.fromCharCode(event.keyCode);
-    console.log("You pressed:" + charValue);
-
-    wordGuess.makeAGuess(charValue);
-    showState();
-
-    if ((wordGuess.guessesRemaining < 1) || (wordGuess.guessedCorrectly)) {
-      if (wordGuess.guessedCorrectly) {
-        endGame("You WON! Word is: " + wordGuess.wordToGuess + " - Press Spacebar to restart");
-      } else {
-        endGame("Game Over, word is: " + wordGuess.wordToGuess + " - you lost, Press Spacebar to restart");
-      }
-
-    }
-  } else { // wait for spacebar
-    if (event.keyCode == 32) {
-      wordGuess.reset("Queen", 5);
-      wordGuess.gameInProgress = true; // start the gamne
-      showState();
-      audioStart.play();
-    }
-  }
-
-});
-
-// End the current game
-function endGame(str) {
-
-  // Display Message
-  document.getElementById("gameMessage").innerHTML = str;
-
-  // Play game end audio
-  if (wordGuess.guessedCorrectly) {
-    var audioCorrect = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3");
-    audioCorrect.play();
-  } else {
-    var audioIncorrect = new Audio("sounds/Buzzer-SoundBible.com.mp3");
-    audioIncorrect.play();
-  }
-
-}
-
-function showState() {
-  document.getElementById("currentGuess").innerHTML = wordGuess.currentGuess;
-  document.getElementById("guessesRemaining").innerHTML = wordGuess.guessesRemaining;
-  document.getElementById("lettersGuessed").innerHTML = wordGuess.lettersGuessed;
-  document.getElementById("lettersCorrectlyGuessed").innerHTML = wordGuess.lettersCorrectlyGuessed;
-  document.getElementById("lettersIncorrectlyGuessed").innerHTML = wordGuess.lettersIncorrectlyGuessed;
-  if (wordGuess.gameInProgress) {
-    document.getElementById("gameMessage").innerHTML = "playing ...";
-  }
-  document.getElementById("nbrWins").innerHTML = "Number of Wins: " + wordGuess.nbrWins;
-}
-
-/*
-var guess;
-while (true) {
-  guess = prompt("Guess A Letter");
-
-  wordGuess.makeAGuess(guess);
-
-  if (wordGuess.guessesRemaining < 1) {
-    console.log("Guesses Remaining: " + wordGuess.guessesRemaining);
-    break;
-  }
-}
-
-wordGuess.log();
-wordGuess.print();
-*/
