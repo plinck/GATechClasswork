@@ -1,10 +1,12 @@
 class WordGuess {
   constructor(word, guesses) {
+    this.nbrWins = 0;
+
     this.reset(word, guesses);
   }
 
   reset(word, guesses) {
-    this.gameInProgress = true;      // true if playing game, false if ended
+    this.gameInProgress = false; // true if playing game, false if ended
     this.wins = 0;
     this.wordToGuess = word;
     this.currentGuess = "";
@@ -48,7 +50,8 @@ class WordGuess {
 
     if (this.currentGuess == this.wordToGuess.toLowerCase()) {
       this.guessedCorrectly = true;
-      this.gameInProgress = false;  // end game, win
+      this.nbrWins += 1;        // Add one to number of games won
+      this.gameInProgress = false; // end game, win
     }
   }
 
@@ -87,7 +90,7 @@ class WordGuess {
 
       // end the game if no more guesses
       if (this.guessesRemaining < 1) {
-        this.gameInProgress = false;  // end game, loss
+        this.gameInProgress = false; // end game, loss
       }
 
     } else {
@@ -124,6 +127,7 @@ class WordGuess {
 
 // Word Guess
 var wordGuess = new WordGuess("Queen", 5);
+var audioStart = new Audio("sounds/Pacman_Introduction_Music-KP.mp3");
 showState();
 
 console.log("Word to Guess: '" + wordGuess.wordToGuess + "'");
@@ -152,16 +156,29 @@ document.addEventListener('keyup', function (event) {
   } else { // wait for spacebar
     if (event.keyCode == 32) {
       wordGuess.reset("Queen", 5);
+      wordGuess.gameInProgress = true; // start the gamne
       showState();
+      audioStart.play();
     }
   }
 
 });
 
+// End the current game
 function endGame(str) {
+
+  // Display Message
   document.getElementById("gameMessage").innerHTML = str;
-  // Now wait for spacebar
-  continueGame = false;
+
+  // Play game end audio
+  if (wordGuess.guessedCorrectly) {
+    var audioCorrect = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3");
+    audioCorrect.play();
+  } else {
+    var audioIncorrect = new Audio("sounds/Buzzer-SoundBible.com.mp3");
+    audioIncorrect.play();
+  }
+
 }
 
 function showState() {
@@ -173,6 +190,7 @@ function showState() {
   if (wordGuess.gameInProgress) {
     document.getElementById("gameMessage").innerHTML = "playing ...";
   }
+  document.getElementById("nbrWins").innerHTML = "Number of Wins: " + wordGuess.nbrWins;
 }
 
 /*
