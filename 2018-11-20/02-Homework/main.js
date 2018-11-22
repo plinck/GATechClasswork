@@ -15,8 +15,8 @@ var audioWinner = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3"); // Audio if 
 var audioLoser = new Audio("sounds/Buzzer-SoundBible.com.mp3"); // Audio if you got it wrong
 
 // Create wordGuess game object to run the game
-var wordGuess = new WordGuess("Queen", 5);
-displayGameStatus();
+var wordGuess = new WordGuess(5);
+// displayGameStatus();
 
 // Get the keyboard input - whenever a key is press
 // I use *spacebar* to strat the game so the user does not accidentally start it
@@ -48,8 +48,7 @@ document.addEventListener('keyup', function (event) {
   else { 
     // wait for spacebar
     if (event.keyCode == 32) {
-      wordGuess.reset("Queen", 5);
-      wordGuess.gameInProgress = true; // start the gamne
+      wordGuess.reset(5);   // reset all word stuff and start the game
       displayGameStatus();
       audioStart.play();
     }
@@ -80,6 +79,9 @@ function displayGameStatus() {
   document.getElementById("lettersIncorrectlyGuessed").innerHTML = wordGuess.lettersIncorrectlyGuessed;
   if (wordGuess.gameInProgress) {
     document.getElementById("gameMessage").innerHTML = "playing ...";
+    document.getElementById("mainTitle").innerHTML = "Press letter key to guess";
+  } else {
+    document.getElementById("mainTitle").innerHTML = "Press spacebar to start";  
   }
   document.getElementById("nbrWins").innerHTML = "Number of Wins: " + wordGuess.nbrWins;
 }

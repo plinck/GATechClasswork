@@ -6,19 +6,21 @@
 * Java, objective-C etc.
  ********************************************************************************** */
 class WordGuess {
-  constructor(word, guesses) {
+  constructor(guesses) {
     //These are for the overall game no matter how many times you play
     this.nbrWins = 0;
+    this.nextWordIndex = 0;
     this.createWordArray();
+    this.gameInProgress = false; // true if playing game, false if ended
 
-    // These change for each game
-    this.reset(word, guesses);
+    // These initialize and get reset each try
+
   }
 
-  reset(word, guesses) {
-    this.gameInProgress = false; // true if playing game, false if ended
-    this.wins = 0;
-    this.wordToGuess = word;
+  // These change every time the game restarts
+  reset(guesses) {
+    this.gameInProgress = true; // true if playing game, false if ended
+    this.wordToGuess = this.wordArray[this.nextWordIndex];
     this.currentGuess = "";
     this.lettersGuessed = "";
     this.guessesRemaining = guesses;
@@ -28,7 +30,15 @@ class WordGuess {
     this.nbrLettersGuessedIncorrect = 0;
     this.guessedCorrectly = false;
 
-    this.makeBlankGuess(word);
+    this.makeBlankGuess(this.wordToGuess);
+    
+    // Get next word - for now just increment, eventually use random
+    // if it gets to last one, wrap around
+    this.nextWordIndex += 1;
+    if (this.nextWordIndex >= (this.wordArray.length-1)) {
+      this.nextWordIndex = 0;
+    }
+
   }
 
   // Make the blank layout of the word
@@ -45,7 +55,7 @@ class WordGuess {
   createWordArray() {
     this.wordArray = ["Madonna", "Michael Jackson", "Prince", "Queen", "U2", "David Bowie", "The Police",
                       "Eurythmics", "Tears for Fears", "Depeche Mode", "Pink Floyd", "Billy Idol",
-                      "Eurythmics", "TearsforFears", "DepecheMode", "PinkFloyd", "BillyIdol"
+                      "The Cure", "The Cars", "REM", "Talking Heads", "The Clash"
                     ];
   }
 
@@ -118,7 +128,7 @@ class WordGuess {
 
   // Print self/this
   print() {
-    document.write("wins:" + this.wins + "<br>");
+    document.write("wins:" + this.nbrWins + "<br>");
     document.write("wordToGuess:'" + this.wordToGuess + "'" + "<br>");
     document.write("currentGuess:'" + this.currentGuess + "'" + "<br>");
     document.write("lettersGuessed:'" + this.lettersGuessed + "'" + "<br>");
@@ -131,7 +141,7 @@ class WordGuess {
 
   // Log self/this
   log() {
-    console.log("wins:" + this.wins);
+    console.log("wins:" + this.nbrWins);
     console.log("wordToGuess:'" + this.wordToGuess + "'");
     console.log("currentGuess:'" + this.currentGuess + "'");
     console.log("lettersGuessed:'" + this.lettersGuessed + "'");
