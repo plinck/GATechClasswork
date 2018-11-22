@@ -11,8 +11,8 @@
  ********************************************************************************** */
 
 var audioStart = new Audio("sounds/Pacman_Introduction_Music-KP.mp3"); // Audio to start the game
-var audioCorrect = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3"); // Audio if you got it correct
-var audioIncorrect = new Audio("sounds/Buzzer-SoundBible.com.mp3"); // Audio if you got it wrong
+var audioWinner = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3"); // Audio if you got it correct
+var audioLoser = new Audio("sounds/Buzzer-SoundBible.com.mp3"); // Audio if you got it wrong
 
 // Create wordGuess game object to run the game
 var wordGuess = new WordGuess("Queen", 5);
@@ -34,12 +34,13 @@ document.addEventListener('keyup', function (event) {
       wordGuess.makeAGuess(charValue);
       displayGameStatus();
 
-      if ((wordGuess.guessesRemaining < 1) || (wordGuess.guessedCorrectly)) {
-        if (wordGuess.guessedCorrectly) {
-          endGame("You WON! Word is: " + wordGuess.wordToGuess + " - Press Spacebar to restart");
-        } else {
-          endGame("Game Over, word is: " + wordGuess.wordToGuess + " - you lost, Press Spacebar to restart");
-        }
+      // if you are done and got it right, end the game successfully
+      // if you dont have it right and have no more guesses, end game unsuccessfully
+      // Otherwise just give them another guess
+      if (wordGuess.guessedCorrectly) {
+        endGame(true);
+      } else if (wordGuess.guessesRemaining < 1) {
+        endGame(false);
       }
     } // if keycodes 'a' - 'z'
 
@@ -57,16 +58,17 @@ document.addEventListener('keyup', function (event) {
 });
 
 // End the current game
-function endGame(str) {
+function endGame(winner) {
+  // Winner or loser messages and audio
+  if (winner) {
+    str = "You WON! Word is: " + wordGuess.wordToGuess + " - Press Spacebar to restart";
+    audioWinner.play();
+  } else {
+    str ="Game Over, word is: " + wordGuess.wordToGuess + " - you lost, Press Spacebar to restart";
+    audioLoser.play();
+  }
   // Display Message
   document.getElementById("gameMessage").innerHTML = str;
-
-  // Play game end audio
-  if (wordGuess.guessedCorrectly) {
-    audioCorrect.play();
-  } else {
-    audioIncorrect.play();
-  }
 
 }
 

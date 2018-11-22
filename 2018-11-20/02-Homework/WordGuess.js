@@ -7,8 +7,11 @@
  ********************************************************************************** */
 class WordGuess {
   constructor(word, guesses) {
+    //These are for the overall game no matter how many times you play
     this.nbrWins = 0;
+    this.createWordArray();
 
+    // These change for each game
     this.reset(word, guesses);
   }
 
@@ -37,6 +40,13 @@ class WordGuess {
       text += "_";
     }
     this.currentGuess = text;
+  }
+
+  createWordArray() {
+    this.wordArray = ["Madonna", "Michael Jackson", "Prince", "Queen", "U2", "David Bowie", "The Police",
+                      "Eurythmics", "Tears for Fears", "Depeche Mode", "Pink Floyd", "Billy Idol",
+                      "Eurythmics", "TearsforFears", "DepecheMode", "PinkFloyd", "BillyIdol"
+                    ];
   }
 
   // put the letter in the correct spot
