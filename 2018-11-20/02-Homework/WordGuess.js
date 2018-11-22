@@ -23,7 +23,7 @@ class WordGuess {
     this.wordToGuess = this.wordArray[this.nextWordIndex];
     this.currentGuess = "";
     this.lettersGuessed = "";
-    this.guessesRemaining = guesses;
+    this.incorrectGuessesLeft = guesses;
     this.lettersCorrectlyGuessed = "";
     this.nbrLettersGuessedCorrect = 0;
     this.lettersIncorrectlyGuessed = "";
@@ -52,10 +52,15 @@ class WordGuess {
     this.currentGuess = text;
   }
 
+  // Creates an array of word choices
+  // To Do: For words with spaces or special characters, fill in those parts of the word
+  // when you start the guessing game so the only pick letters but get hints
+  // e.g. "The B-52's" wiuld show "_ _ _ _ - 5 2 ' _"
   createWordArray() {
-    this.wordArray = ["Madonna", "Michael Jackson", "Prince", "Queen", "U2", "David Bowie", "The Police",
-                      "Eurythmics", "Tears for Fears", "Depeche Mode", "Pink Floyd", "Billy Idol",
-                      "The Cure", "The Cars", "REM", "Talking Heads", "The Clash"
+    this.wordArray = ["Madonna", "MichaelJackson", "Prince", "Queen", "U2", "DavidBowie", "ThePolice",
+                      "Eurythmics", "TearsforFears", "DepecheMode", "PinkFloyd", "BillyIdol",
+                      "TheCure", "TheCars", "REM", "TalkingHeads", "TheClash", "PeterGabriel",
+                      "NewOrder", "TheB52s"
                     ];
   }
 
@@ -98,11 +103,11 @@ class WordGuess {
       }
     }
 
-    // add to letters guessed if they didnt aleady guess it
+    // Add to the letters guessed string if they didnt aleady guess it
     // If they already guessed this letter, give them a pass and another try
+    // If they guess correctly, do NOT count that against them
     if (this.lettersGuessed.search(lowerLetter) < 0) {
       this.lettersGuessed += lowerLetter;
-      this.guessesRemaining -= 1;
 
       if (nbrFound > 0) {
         // add to letters correctly guessed
@@ -111,13 +116,14 @@ class WordGuess {
 
         this.updateCurrentGuess(indicesFound, lowerLetter);
       } else {
-        // add to letters Incorrectly guessed
+        // Take away one of the guesses and add to letters Incorrectly guessed 
+        this.incorrectGuessesLeft -= 1;
         this.lettersIncorrectlyGuessed += lowerLetter;
         this.nbrLettersGuessedIncorrect += 1;
       }
 
       // end the game if no more guesses
-      if (this.guessesRemaining < 1) {
+      if (this.incorrectGuessesLeft < 1) {
         this.gameInProgress = false; // end game, loss
       }
 
@@ -132,7 +138,7 @@ class WordGuess {
     document.write("wordToGuess:'" + this.wordToGuess + "'" + "<br>");
     document.write("currentGuess:'" + this.currentGuess + "'" + "<br>");
     document.write("lettersGuessed:'" + this.lettersGuessed + "'" + "<br>");
-    document.write("guessesRemaining:" + this.guessesRemaining + "<br>");
+    document.write("incorrectGuessesLeft:" + this.incorrectGuessesLeft + "<br>");
     document.write("lettersCorrectlyGuessed:'" + this.lettersCorrectlyGuessed + "'" + "<br>");
     document.write("nbrLettersGuessedCorrect:" + this.nbrLettersGuessedCorrect + "<br>");
     document.write("lettersIncorrectlyGuessed:'" + this.lettersIncorrectlyGuessed + "'" + "<br>");
@@ -145,7 +151,7 @@ class WordGuess {
     console.log("wordToGuess:'" + this.wordToGuess + "'");
     console.log("currentGuess:'" + this.currentGuess + "'");
     console.log("lettersGuessed:'" + this.lettersGuessed + "'");
-    console.log("guessesRemaining:" + this.guessesRemaining);
+    console.log("incorrectGuessesLeft:" + this.incorrectGuessesLeft);
     console.log("lettersCorrectlyGuessed:'" + this.lettersCorrectlyGuessed + "'");
     console.log("nbrLettersGuessedCorrect:" + this.nbrLettersGuessedCorrect);
     console.log("lettersIncorrectlyGuessed:'" + this.lettersIncorrectlyGuessed + "'");

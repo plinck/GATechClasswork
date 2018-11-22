@@ -10,6 +10,7 @@
  * would create 1..n "word" objects for each time they tried.
  ********************************************************************************** */
 
+ // Note, add these to the class later
 var audioStart = new Audio("sounds/Pacman_Introduction_Music-KP.mp3"); // Audio to start the game
 var audioWinner = new Audio("sounds/Strong_Punch-Mike_Koenig.mp3"); // Audio if you got it correct
 var audioLoser = new Audio("sounds/Buzzer-SoundBible.com.mp3"); // Audio if you got it wrong
@@ -29,8 +30,8 @@ document.addEventListener('keyup', function (event) {
     var charValue = String.fromCharCode(event.keyCode);
 
     // Make sure the character is a valid letter and if it is not, just igore it and move on
-    // Only accept keycodes for 'a' (65) through 'z' (90)
-    if ((event.keyCode >= 65) && (event.keyCode <= 90)) {
+    // Only accept keycodes for 'a' (65) through 'z' (90) and '0' (48) through '9' (57)
+    if (((event.keyCode >= 65) && (event.keyCode <= 90)) || ((event.keyCode >= 48) && (event.keyCode <= 57))) {
       wordGuess.makeAGuess(charValue);
       displayGameStatus();
 
@@ -39,7 +40,7 @@ document.addEventListener('keyup', function (event) {
       // Otherwise just give them another guess
       if (wordGuess.guessedCorrectly) {
         endGame(true);
-      } else if (wordGuess.guessesRemaining < 1) {
+      } else if (wordGuess.incorrectGuessesLeft < 1) {
         endGame(false);
       }
     } // if keycodes 'a' - 'z'
@@ -73,13 +74,13 @@ function endGame(winner) {
 
 function displayGameStatus() {
   document.getElementById("currentGuess").innerHTML = wordGuess.currentGuess;
-  document.getElementById("guessesRemaining").innerHTML = wordGuess.guessesRemaining;
+  document.getElementById("incorrectGuessesLeft").innerHTML = wordGuess.incorrectGuessesLeft;
   document.getElementById("lettersGuessed").innerHTML = wordGuess.lettersGuessed;
   document.getElementById("lettersCorrectlyGuessed").innerHTML = wordGuess.lettersCorrectlyGuessed;
   document.getElementById("lettersIncorrectlyGuessed").innerHTML = wordGuess.lettersIncorrectlyGuessed;
   if (wordGuess.gameInProgress) {
     document.getElementById("gameMessage").innerHTML = "playing ...";
-    document.getElementById("mainTitle").innerHTML = "Press letter key to guess";
+    document.getElementById("mainTitle").innerHTML = "Press letter or number key to guess";
   } else {
     document.getElementById("mainTitle").innerHTML = "Press spacebar to start";  
   }
