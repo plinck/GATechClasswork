@@ -2,39 +2,58 @@
 <html lang="en-us">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Rock Paper Scissors Part 2
-  </title>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Part 2
+    </title>
 </head>
 
 <body>
 
-  <div id="game">
+    <div id="game">
 
-  </div>
+    </div>
 
-  <script type="text/javascript">
+    <script type="text/javascript">
+        // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+        var computerChoices = ["r", "p", "s"];
 
-    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
-    var computerChoices = ["r", "p", "s"];
+        // This function is run whenever the user presses a key.
+        document.onkeyup = function (event) {
 
-    // This function is run whenever the user presses a key.
-    document.onkeyup = function(event) {
+            // Determines which key was pressed.
+            if (event.key != 'r' && event.key != 'p' && event.key != "s") {
+                alert("User guess not valid, try again - must be r, p, or s");
+            } else {
+                var userGuess = event.key;
 
-      // Determines which key was pressed.
-      var userGuess = event.key;
+                // Randomly chooses a choice from the options array. This is the Computer's guess.
+                var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
-      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+                // Alerts the key the user pressed (userGuess).
+                alert("User guess: " + userGuess);
 
-      // Alerts the key the user pressed (userGuess).
-      alert("User guess: " + userGuess);
+                // Alerts the Computer's guess.
+                alert("Computer guess: " + computerGuess);
 
-      // Alerts the Computer's guess.
-      alert("Computer guess: " + computerGuess);
+                // show winner and loser in innerHTML of id=game
+                document.getElementById("game").innerHTML = "The Winner is: ";
+                // 4. if 1 has rock
+                //     1. if 2 has rock - tie
+                //     2. if 2 has paper - 2 wins
+                //     3. if 2 has scissors - 1 wins
+                // 5. if 1 has paper
+                //     1. if 2 has rock - 1 winsx
+                //     2. if 2 has paper - tie
+                //     3. if 2 has scissors - 2 wins
+                // 6. if 1 has scissor
+                //     1. if 2 has rock - 2 wins
+                //     2. if 2 has paper - 1 wins
+                //     3. if 2 has scissors - tie
 
-    };
-  </script>
+            }
+
+        };
+    </script>
 
 </body>
 
