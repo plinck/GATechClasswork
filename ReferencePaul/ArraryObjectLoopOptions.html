@@ -13,6 +13,19 @@
     <script>
         // Creating an array of vegetables.
         var vegetables = ["Carrots", "Peas", "Lettuce", "Tomatoes"];
+        var myQuestions = [{
+                "question": "Is the Sky Blue?",
+                "answer": true
+            },
+            {
+                "question": "Is your hair blonde?",
+                "answer": false
+            },
+            {
+                "question": "Is the capital of Georgia, Milledgeville?",
+                "answer": false
+            }
+        ];
 
         // Looping through each item in the array and logging a message to the console.
         for (var i = 0; i < vegetables.length; i++) {
@@ -28,6 +41,13 @@
         vegetables.forEach(element => {
             console.log(element);
         });
+
+        // This loops through all questions and all the properties in question object and prints name and value
+        for (var i = 0; i < myQuestions.length; i++) {
+            for (let elem in myQuestions[i]) {
+                console.log(elem + ": " + myQuestions[i][elem]);
+            }
+        }
     </script>
 
 </body>

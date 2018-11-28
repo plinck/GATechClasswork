@@ -8,9 +8,13 @@
 
 <body>
 
-    <h1>Press t for True and f for False to answer the question</h1>
+    <h3>Press t for True and f for False to answer the question</h3>
     <p id="question"></p>
+    <br>
     <!-- <input id="userAnswer" type="text" onkeyup="waitForInputField()"> -->
+    <hr>
+    <p>Last Question/Answer</p>
+    <p id="lastQuestion"></p>
     <p id="answer"></p>
     <p id="result"></p>
 
@@ -35,8 +39,6 @@
         // Go to the next question in the list - wrap around if no more
         function displayNextQuestion() {
             document.getElementById("question").innerHTML = myQuestions[currentQuestion].question;
-            document.getElementById("result").innerHTML = "";
-            document.getElementById("answer").innerHTML = "";
         }
 
         // After answer is given, check to see if user was correct
@@ -44,19 +46,30 @@
             // Wait for Answer
             if (answer == myQuestions[currentQuestion].answer) {
                 document.getElementById("result").innerHTML = "Correct!";
+                alert("Correct!");
                 totalScore += 1;
             } else {
                 document.getElementById("result").innerHTML = "Wrong!";
+                alert("Wrong!");
             }
             document.getElementById("answer").innerHTML = myQuestions[currentQuestion].answer;
             pickedAnswer = false;
 
+            document.getElementById("lastQuestion").innerHTML = myQuestions[currentQuestion].question;
             currentQuestion++;
             if (currentQuestion >= myQuestions.length) {
+                endCurrentGame(totalScore, myQuestions.length);
                 currentQuestion = 0;
+                totalScore = 0;
             }
         }
 
+        // End the game - display totals
+        function endCurrentGame(totalScore, nbr) {
+            alert("Game Over - you answered " + totalScore + " correctly, out of " + nbr + " total");
+        }
+
+        // This option is used if using an input field to get the users keystroke entered
         // Wait for a key event from a specific input field
         function waitForInputField() {
             var answer = false; // true or false
@@ -80,6 +93,7 @@
             displayNextQuestion();
         }
 
+        // This option is used if using any key event in the window to get user's answer
         // Wait for a key event on the window of the browser
         document.onkeyup = function (event) {
             if (event.key == 't' || event.key == 'f') {
@@ -97,27 +111,20 @@
             }
         }
 
-        // MAIN
+        /****************************************************************************************
+         * MAIN
+         * The whole tyhing starts by displaying a question.  Then, we just sit there and wait
+         * until the user gives an answer of t or f.  Afgter that, lwe go to next question.
+         * Adding a timeout for each question would be a nice addition
+         * I have two alternative method for doing this.
+         * 1) Use text input field tyo get user input
+         * 2) Use onkeyup global event to get user input
+         * The rest of the code is the same but these two alternatives control the flow
+         **************************************************************************************** */
         displayNextQuestion();
 
-        // This loops through all properties in object and prints name and value
-        // for (let elem in myQuestions[i]) {
-        //     console.log(elem + ": " + myQuestions[i][elem]);
-        // }
     </script>
 
 </body>
 
 </html>
-
-<!-- * Starting from a blank HTML file, create an array with 10 question objects. Each object in the array should be structured as follows: 
-
-  `{ q: "QUESTION", a: "ANSWER" }`
-
-* Then create code that will ask the user questions, one by one. The user must answer by hitting t (for true) or f (for false).
-
-* Check the user's answer against the correct answer, and provide them with an alert telling them if they are right or wrong.
-
-* **BONUS:** Keep track of the user's score.
-
-* **HINT:** Don't worry about having DRY code to start with. Just focus on getting working code first. -->
