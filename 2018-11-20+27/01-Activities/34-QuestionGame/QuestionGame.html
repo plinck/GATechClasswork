@@ -3,14 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Loops</title>
+    <title>Question Game</title>
 </head>
 
 <body>
 
-    <h1>Open the console to see the magic!</h1>
+    <h1>Press t for True and f for False to answer the question</h1>
+    <p id="question"></p>
+    <!-- <input id="userAnswer" type="text" onkeyup="waitForInputField()"> -->
+    <p id="answer"></p>
+    <p id="result"></p>
 
     <script>
+        var totalScore = 0;
+        var currentQuestion = 0;
+
         var myQuestions = [{
                 "question": "Is the Sky Blue?",
                 "answer": true
@@ -19,43 +26,84 @@
                 "question": "Is your hair blonde?",
                 "answer": false
             },
-
+            {
+                "question": "Is the capital of Georgia, Milledgeville?",
+                "answer": false
+            }
         ];
 
-        var answer;
+        // Go to the next question in the list - wrap around if no more
+        function displayNextQuestion() {
+            document.getElementById("question").innerHTML = myQuestions[currentQuestion].question;
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("answer").innerHTML = "";
+        }
 
-        for (let i = 0; i < myQuestions.length; i++) {
-
-            // get keyup until its t or f
-            // t = true, f = false
-            document.write(myQuestions[i].question);
-
-
-            /*
-            if (a == myQuestions[i].answer) {
-                alert ("correct");
+        // After answer is given, check to see if user was correct
+        function checkAnswer(answer) {
+            // Wait for Answer
+            if (answer == myQuestions[currentQuestion].answer) {
+                document.getElementById("result").innerHTML = "Correct!";
+                totalScore += 1;
             } else {
-                alert ("Incorrect");
+                document.getElementById("result").innerHTML = "Wrong!";
             }
-*/
+            document.getElementById("answer").innerHTML = myQuestions[currentQuestion].answer;
+            pickedAnswer = false;
 
-            for (let elem in myQuestions[i]) {
-                console.log(elem + ": " + myQuestions[i][elem]);
+            currentQuestion++;
+            if (currentQuestion >= myQuestions.length) {
+                currentQuestion = 0;
             }
         }
 
-        document.onkeyup = function (event) {
-            myAnswerFunction(event);
-        }
+        // Wait for a key event from a specific input field
+        function waitForInputField() {
+            var answer = false; // true or false
 
-        function myAnswerFunction(event) {
-            if (event.key == 't') {
+            var myAnswer = document.getElementById("userAnswer");
+            myAnswer.value = myAnswer.value.toLowerCase();
+
+            if (myAnswer.value == 't') {
+                console.log("You picked true");
                 answer = true;
             }
-            if (event.key == 'f') {
+            if (myAnswer.value == 'f') {
+                console.log("You picked false");
                 answer = false;
-
             }
+
+            // clear answer
+            document.getElementById("userAnswer").value = "";
+
+            checkAnswer(answer);
+            displayNextQuestion();
+        }
+
+        // Wait for a key event on the window of the browser
+        document.onkeyup = function (event) {
+            if (event.key == 't' || event.key == 'f') {
+                if (event.key == 't') {
+                    console.log("You picked true");
+                    answer = true;
+                }
+                if (event.key == 'f') {
+                    console.log("You picked false");
+                    answer = false;
+                }
+
+                checkAnswer(answer);
+                displayNextQuestion();
+            }
+        }
+
+        // MAIN
+        displayNextQuestion();
+
+        // This loops through all properties in object and prints name and value
+        // for (let elem in myQuestions[i]) {
+        //     console.log(elem + ": " + myQuestions[i][elem]);
+        // }
     </script>
 
 </body>
