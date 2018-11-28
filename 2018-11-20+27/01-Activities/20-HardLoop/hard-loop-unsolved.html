@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+</head>
+
+<body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script>
+        var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
+
+        for (var i = 0; i < myFarm.length; i++) {
+            console.log("Animal :" + myFarm[i]);
+            if (myFarm[i][0] == 'c' || myFarm[i].charAt(0) == 'o') {
+                alert(myFarm[i] + " starts with 'c' or 'o'");
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

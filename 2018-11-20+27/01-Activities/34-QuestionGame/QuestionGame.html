@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+</head>
+
+<body>
+
+    <h1>Open the console to see the magic!</h1>
+
+    <script>
+        var myQuestions = [{
+                "question": "Is the Sky Blue?",
+                "answer": true
+            },
+            {
+                "question": "Is your hair blonde?",
+                "answer": false
+            },
+
+        ];
+
+        var answer;
+
+        for (let i = 0; i < myQuestions.length; i++) {
+
+            // get keyup until its t or f
+            // t = true, f = false
+            document.write(myQuestions[i].question);
+
+
+            /*
+            if (a == myQuestions[i].answer) {
+                alert ("correct");
+            } else {
+                alert ("Incorrect");
+            }
+*/
+
+            for (let elem in myQuestions[i]) {
+                console.log(elem + ": " + myQuestions[i][elem]);
+            }
+        }
+
+        document.onkeyup = function (event) {
+            myAnswerFunction(event);
+        }
+
+        function myAnswerFunction(event) {
+            if (event.key == 't') {
+                answer = true;
+            }
+            if (event.key == 'f') {
+                answer = false;
+
+            }
+    </script>
+
+</body>
+
+</html>
+
+<!-- * Starting from a blank HTML file, create an array with 10 question objects. Each object in the array should be structured as follows: 
+
+  `{ q: "QUESTION", a: "ANSWER" }`
+
+* Then create code that will ask the user questions, one by one. The user must answer by hitting t (for true) or f (for false).
+
+* Check the user's answer against the correct answer, and provide them with an alert telling them if they are right or wrong.
+
+* **BONUS:** Keep track of the user's score.
+
+* **HINT:** Don't worry about having DRY code to start with. Just focus on getting working code first. -->

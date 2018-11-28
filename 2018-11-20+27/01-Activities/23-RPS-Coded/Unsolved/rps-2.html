@@ -21,38 +21,58 @@
         document.onkeyup = function (event) {
 
             // Determines which key was pressed.
-            if (event.key != 'r' && event.key != 'p' && event.key != "s") {
-                alert("User guess not valid, try again - must be r, p, or s");
+            var userGuess = event.key;
+
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            // Alerts the key the user pressed (userGuess).
+            alert("User guess: " + userGuess);
+
+            // Alerts the Computer's guess.
+            alert("Computer guess: " + computerGuess);
+
+            // show winner and loser in innerHTML of id=game
+            // document.getElementById("game").innerHTML = "The Winner is: ";
+
+            message = document.getElementById("game");
+
+            if (userGuess == 'r') {
+                if (computerGuess == 'r') {
+                    message.innerHTML = "Rock/Rock - TIE";
+                }
+                if (computerGuess == 'p') {
+                    message.innerHTML = "Rock/Paper - Computer Won";
+                }
+                if (computerGuess == 's') {
+                    message.innerHTML = "Rock/Scissors - I Won";
+                }
+            } else if (userGuess == 'p') {
+                if (computerGuess == 'r') {
+                    message.innerHTML = "Paper/Rock - I Won";
+                }
+                if (computerGuess == 'p') {
+                    message.innerHTML = "Paper/Paper - Tie";
+                }
+                if (computerGuess == 's') {
+                    message.innerHTML = "Paper/Scissors - Computer Won";
+                }
+
+            } else if (userGuess == 's') {
+                if (computerGuess == 'r') {
+                    message.innerHTML = "Scissors/Rock - I Lose";
+                }
+                if (computerGuess == 'p') {
+                    message.innerHTML = "Scissors/Paper - I win";
+                }
+                if (computerGuess == 's') {
+                    message.innerHTML = "Scissors/Scissors - TIE";
+                }
             } else {
-                var userGuess = event.key;
-
-                // Randomly chooses a choice from the options array. This is the Computer's guess.
-                var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-
-                // Alerts the key the user pressed (userGuess).
-                alert("User guess: " + userGuess);
-
-                // Alerts the Computer's guess.
-                alert("Computer guess: " + computerGuess);
-
-                // show winner and loser in innerHTML of id=game
-                document.getElementById("game").innerHTML = "The Winner is: ";
-                // 4. if 1 has rock
-                //     1. if 2 has rock - tie
-                //     2. if 2 has paper - 2 wins
-                //     3. if 2 has scissors - 1 wins
-                // 5. if 1 has paper
-                //     1. if 2 has rock - 1 winsx
-                //     2. if 2 has paper - tie
-                //     3. if 2 has scissors - 2 wins
-                // 6. if 1 has scissor
-                //     1. if 2 has rock - 2 wins
-                //     2. if 2 has paper - 1 wins
-                //     3. if 2 has scissors - tie
+                message.innerHTML = "Pick Rock, paper or scissors you fool";
 
             }
-
-        };
+        }
     </script>
 
 </body>
