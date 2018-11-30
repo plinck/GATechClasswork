@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Content!</title>
+    <link rel="shortcut icon" href="">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Drink Selection!</h1>
+    <hr>
+
+    <div id="drink-options"></div>
+
+    <script type="text/javascript">
+        var drinkList = [
+            "Coffee: $5",
+            "Espresso: $7",
+            "Cappuccino: $6",
+            "Latte: $4",
+            "Tea: $3",
+            "Ice Coffee: $6",
+            "Ice Espresso: $8",
+            "Ice Latte: $6",
+            "Ice Tea: $4"
+        ];
+
+        // Using JavaScript programmatically append each drinkList item to the "drink-options" div
+        // HINT: you will need a for loop to go over each element in the list
+        // 1. Create code that "grabs" the div with the matching id (#drink-options);
+        var drinkOptions = $("#drink-options");
+        drinkOptions.text("Drink Choices for i in obj");
+
+        // treat like a object - i.e. i is the "key" and drinkList[i]; is the "value"
+        for (i in drinkList) {
+            var drinkDiv = $("<div>");
+
+            drinkDiv.text(drinkList[i]);
+            drinkOptions.append(drinkDiv);
+
+            // alternate way of doing
+            // $("#drink-options").append(drinkDiv);
+        }
+
+    </script>
+
+</body>
+
+</html>

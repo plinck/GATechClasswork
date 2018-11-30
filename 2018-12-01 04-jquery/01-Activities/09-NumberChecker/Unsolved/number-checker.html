@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Number Checker</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="text-center">Number Guesser</h1>
+        <h2 class="text-center">See if you can guess the number the computer is thinker of!</h2>
+    </div>
+
+    <div class="container">
+
+        <div class="card mt-1">
+            <div class="card-header">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Computer Pick</h3>
+                    <h1 id="computer-pick">???</h1>
+                </div>
+            </div>
+
+            <div class="card mt-1">
+                <div class="card-header">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">You Pick</h3>
+                        <button id="button-1" class="btn btn-danger btn-choice" value="1">
+                            <h1>1</h1>
+                        </button>
+                        <button id="button-2" class="btn btn-danger btn-choice" value="2">
+                            <h1>2</h1>
+                        </button>
+                        <button id="button-3" class="btn btn-danger btn-choice" value="3">
+                            <h1>3</h1>
+                        </button>
+                        <button id="button-4" class="btn btn-danger btn-choice" value="4">
+                            <h1>4</h1>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card mt-1">
+                    <div class="card-header">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">Result</h3>
+                            <h1 id="result"></h1>
+                        </div>
+                    </div>
+
+                </div>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+
+                        // Here we create the on click event that gets the user's pick
+                        $(".btn-choice").on("click", function () {
+
+                            console.log("You clicked a button!!");
+
+                            // Add code to have the computer guess a random from between 1 and 4
+                            var randomNbr = getRandomInteger(1, 4);
+
+                            // THERE MUST BE a more straightforward way using the id selcectors
+                            // to find which one was pressed
+                            
+                            // NOTE: "this" is the object clicked, to use in jQuery you must use $(this)
+                            // .index(selector) -- 
+                            // index() searches "this" for its index within the list of all .btn-choices 
+                            // i.e. finding the index of this in the .btn-choice array
+                            var idx = $(this).index('.btn-choice');  // search for index of item clicked in .btn-choice
+                            var userChoice = $(this).val();        // The value of the specific one picked
+
+                            // Then determine which button was clicked
+                            // Compare the computer and user guess
+                            // Inform the user if the've guessed correctly or incorrectly
+
+                            $("#computer-pick").text(randomNbr);
+
+                            console.log('$("#button-1")' + $("#button-1").val());
+                            console.log('$("#button-2")' + $("#button-2").val());
+                            console.log('$("#button-3")' + $("#button-3").val());
+                            console.log('$("#button-4")' + $("#button-4").val());
+
+                            console.log("idx: " + idx);
+                            console.log("randomNbr: " + randomNbr);
+                            console.log("userChoice: " + userChoice);
+
+                            if (userChoice == randomNbr) {
+                                // Winner
+                                $("#result").text("Correct, you picked: " + userChoice);
+                            } else {
+                                // Loser
+                                $("#result").text("WRONG, you picked: " + userChoice);
+                            }
+
+
+                        });
+                    });
+
+                    function getRandomInteger(min, max) {
+                        // Add 1 to max-min so it is min to max inclusive
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+                </script>
+
+</body>
+
+</html>

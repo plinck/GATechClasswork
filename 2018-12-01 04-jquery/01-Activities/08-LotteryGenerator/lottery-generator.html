@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery Number</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+
+        <h1 class="text-center">Generate a Lottery Number</h1>
+
+        <div class="text-center">
+
+            <!-- Here we have our button for generating random numbers (#random-button) -->
+            <button id="random-button" class="btn btn-primary btn-lg">
+                <h1><span class="fa fa-question"></span></h1>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Here we have div called "random-number" where our random number will go -->
+    <h1 class="text-center" id="random-number"></h1>
+
+    <script type="text/javascript">
+        // Using the code from the previous random number generator as a starting point, create a lottery generator.
+        // In our case, the lottery number generator should pick 
+        // 9 random numbers between 0-9 and output as one number. As an example: 886563264.
+        // Display this number in the random-number div.
+        // Then when a user clicks again, have the code create a new row with the latest number at the top.
+
+        $(document).ready(function () {
+
+            // CREATE THE MISSING CODE HERE. Your code should add content to the random-number div.
+            // ...
+            $("#random-button").on("click", function () {
+                var lotteryString = "";
+
+                for (var i = 0; i < 9; i++) {
+                    // pick random number between 0-9
+                    randomNbr = getRandomInteger(0, 9);
+                    lotteryString += String(randomNbr);
+                }
+                newDiv = $("<div>");
+                $("#random-number").prepend(newDiv);
+                newDiv.text(lotteryString);
+
+            });
+
+        }); // (document.ready)
+
+        function getRandomInteger(min, max) {
+            // Add 1 to max-min so it is min to max inclusive
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+
+</body>
+
+</html>
