@@ -85,103 +85,212 @@
             </div>
           </div>
         </div>
+
+        <!-- Controls (Stretch, Laugh, Clones, Fire) -->
+        <div id="moveControls" class="card">
+          <h4 class="card-header">More Powers</h4>
+          <div class="card-body">
+            <div class="text-center mb-1">
+              <button class="btn btn-dark btn-lg stretchBtn">Stretch</button>
+              <button class="btn btn-dark btn-lg normalBtn">Normal</button>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg laughBtn">Laugh</button>
+              <button class="btn btn-dark btn-lg cloneBtn">Clone</button>
+              <button class="btn btn-dark btn-lg createFireBtn">Fire</button>
+            </div>
+          </div>
+        </div>
+
+
       </div>
 
       <!-- Right Card (Captain Planet Hero)-->
       <div class="col-lg-6">
 
         <!-- Captain Planet Image -->
-        <img src="assets/captain-planet.jpg" alt="" class="img captain-planet" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px">
+        <div id='imgDiv'>
+          <img src="assets/captain-planet.jpg" alt="" class="img captain-planet" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px">
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    // JavaScript function that wraps everything
+    $(document).ready(function () {
 
-  // JavaScript function that wraps everything
-  $(document).ready(function() {
+      var captainPlanet = $(".captain-planet");
 
-    var captainPlanet = $(".captain-planet");
+      // Gets Link for Theme Song
+      var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "assets/captainplanet24.mp3");
 
-    // Gets Link for Theme Song
-    var audioElement = document.createElement("audio");
-    audioElement.setAttribute("src", "assets/captainplanet24.mp3");
+      // Gets Link for Laugh 
+      var audioLaugh = document.createElement("audio");
+      audioLaugh.setAttribute("src", "assets/evillaugh.mp3");
 
-    // Theme Button
-    $(".theme-button").on("click", function() {
-      audioElement.play();
-    });
-    $(".pause-button").on("click", function() {
-      audioElement.pause();
-    });
+      // Theme Button
+      $(".theme-button").on("click", function () {
+        audioElement.play();
+      });
+      $(".pause-button").on("click", function () {
+        audioElement.pause();
+      });
 
-    // Size Buttons
-    $(".normal-button").on("click", function() {
-      captainPlanet.animate({ height: "300px" });
-    });
-    $(".grow-button").on("click", function() {
-      captainPlanet.animate({ height: "500px" });
-    });
-    $(".shrink-button").on("click", function() {
-      captainPlanet.animate({ height: "100px" });
-    });
+      // Size Buttons
+      $(".normal-button").on("click", function () {
+        captainPlanet.animate({
+          height: "300px"
+        });
+      });
+      $(".grow-button").on("click", function () {
+        captainPlanet.animate({
+          height: "500px"
+        });
+      });
+      $(".shrink-button").on("click", function () {
+        captainPlanet.animate({
+          height: "100px"
+        });
+      });
 
-    // Visibility Buttons
-    $(".vis-button").on("click", function() {
-      captainPlanet.animate({ opacity: "1" });
-    });
-    $(".invis-button").on("click", function() {
-      captainPlanet.animate({ opacity: "0.05" });
-    });
+      // Visibility Buttons
+      $(".vis-button").on("click", function () {
+        captainPlanet.animate({
+          opacity: "1"
+        });
+      });
+      $(".invis-button").on("click", function () {
+        captainPlanet.animate({
+          opacity: "0.05"
+        });
+      });
 
-    // Move Buttons
-    $(".up-button").on("click", function() {
-      captainPlanet.animate({ top: "-=200px" }, "normal");
-    });
-    $(".down-button").on("click", function() {
-      captainPlanet.animate({ top: "+=200px" }, "normal");
-    });
-    $(".left-button").on("click", function() {
-      captainPlanet.animate({ left: "-=200px" }, "normal");
-    });
-    $(".right-button").on("click", function() {
-      captainPlanet.animate({ left: "+=200px" }, "normal");
-    });
-    $(".back-button").on("click", function() {
-      captainPlanet.animate({ top: "50px", left: "80px" }, "fast");
-    });
+      // Move Buttons
+      $(".up-button").on("click", function () {
+        captainPlanet.animate({
+          top: "-=200px"
+        }, "normal");
+      });
+      $(".down-button").on("click", function () {
+        captainPlanet.animate({
+          top: "+=200px"
+        }, "normal");
+      });
+      $(".left-button").on("click", function () {
+        captainPlanet.animate({
+          left: "-=200px"
+        }, "normal");
+      });
+      $(".right-button").on("click", function () {
+        captainPlanet.animate({
+          left: "+=200px"
+        }, "normal");
+      });
+      $(".back-button").on("click", function () {
+        captainPlanet.animate({
+          top: "50px",
+          left: "80px"
+        }, "fast");
+      });
 
-    // Keyboard move controls
-    $(document).keyup(function(e) {
-      switch (e.which) {
+      // Keyboard move controls
+      $(document).keyup(function (e) {
+        switch (e.which) {
 
-      // Move Buttons (Keyboard Down)
-      case 40:
-        captainPlanet.animate({ top: "+=200px" }, "normal");
-        break;
+          // Move Buttons (Keyboard Down)
+          case 40:
+            captainPlanet.animate({
+              top: "+=200px"
+            }, "normal");
+            break;
 
-        // Move Buttons (Keyboard Right)
-      case 39:
-        captainPlanet.animate({ left: "+=200px" }, "normal");
-        break;
+            // Move Buttons (Keyboard Right)
+          case 39:
+            captainPlanet.animate({
+              left: "+=200px"
+            }, "normal");
+            break;
 
-        // Move Buttons (Keyboard Up)
-      case 38:
-        captainPlanet.animate({ top: "-=200px" }, "normal");
-        break;
+            // Move Buttons (Keyboard Up)
+          case 38:
+            captainPlanet.animate({
+              top: "-=200px"
+            }, "normal");
+            break;
 
-        // Move Buttons (Keyboard Left)
-      case 37:
-        captainPlanet.animate({ left: "-=200px" }, "normal");
-        break;
+            // Move Buttons (Keyboard Left)
+          case 37:
+            captainPlanet.animate({
+              left: "-=200px"
+            }, "normal");
+            break;
 
-      default:
-        break;
-      }
-    });
-  });
+          default:
+            break;
+        }
+      });
 
+      // More Powers
+      $(".stretchBtn").on("click", function () {
+        captainPlanet.animate({
+          width: "800px"
+        }, 1500);
+      });
+      $(".normalBtn").on("click", function () {
+        captainPlanet.animate({
+          width: "420px"
+        }, 2000);
+      });
+      $(".laughBtn").on("click", function () {
+        audioLaugh.play();
+      });
+
+      var imageNbr;
+      $(".cloneBtn").on("click", function () {
+        var img;
+
+        if (imageNbr == undefined) {
+          img = captainPlanet.clone();
+          imageNbr = 1;
+        } else {
+          var imgName = "#img" + imageNbr;
+          img = $(imgName).clone();
+          imageNbr += 1;
+        }
+
+        // var img = $("#img1").children("img").clone();
+
+        img.attr("id", ("img" + imageNbr));
+        img.addClass("newImage");
+        img.css("top", "+=100px");
+        img.css("left", "+=100px");
+
+        $("#imgDiv").append(img);
+
+      });
+
+      $(".createFireBtn").on("click", function () {
+        // create a fire image and show it
+        var img;
+
+        img = $("<img src='assets/fire-icon.jpg'>");
+
+        img.attr("id", ("imgFire"));
+        img.css("z-index", -19);
+        img.addClass("imgFire");
+        img.css("top", "100px");
+        img.css("left", "100px");
+
+        $("#imgDiv").append(img);
+
+      });
+
+
+    }); // document.ready
   </script>
 
 </body>
+
 </html>
