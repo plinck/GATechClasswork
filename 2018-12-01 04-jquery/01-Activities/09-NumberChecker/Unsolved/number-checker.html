@@ -80,16 +80,13 @@
                             var idx = $(this).index('.btn-choice');  // search for index of item clicked in .btn-choice
                             var userChoice = $(this).val();        // The value of the specific one picked
 
+                            var myAttrId = $(this).attr("id"); // #button-1, 2, 3, 4
+
                             // Then determine which button was clicked
                             // Compare the computer and user guess
                             // Inform the user if the've guessed correctly or incorrectly
 
                             $("#computer-pick").text(randomNbr);
-
-                            console.log('$("#button-1")' + $("#button-1").val());
-                            console.log('$("#button-2")' + $("#button-2").val());
-                            console.log('$("#button-3")' + $("#button-3").val());
-                            console.log('$("#button-4")' + $("#button-4").val());
 
                             console.log("idx: " + idx);
                             console.log("randomNbr: " + randomNbr);
