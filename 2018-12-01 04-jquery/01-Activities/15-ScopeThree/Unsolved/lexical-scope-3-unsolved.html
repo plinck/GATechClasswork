@@ -18,6 +18,7 @@
     }
 
     // What will get alerted?
+    // A: "One: 1"
     one();
 
     // Example Two: Local Scope
@@ -32,6 +33,10 @@
     }
 
     // What will get alerted?
+    // A: "Two: 1"
+    // Explanation: twotop calls twotop()
+    // twotop defines two(), and then invokes two(a) with global
+    // var a which is 1
     twotop();
 
     // Example Three: Local Scope
@@ -44,6 +49,11 @@
     }
 
     // What will get alerted?
+    // A: "Three: 3"
+    // Explanation: a gets redefined to 5 in the global scoope
+    // (NOTE: variable declarations get hoisted but assignments to not)
+    // three() is invoked which sets a local var of a  to 3
+    // It then alerts the local var a which is 3.
     three();
 
     // Example Four: Local Scope
@@ -67,6 +77,20 @@
     }
 
     // What will get alerted?
+    // Setup explanation
+    // first() invokes first function first() setting new local var a equal to 5 -- wont use parent's a
+    // --> so first() scope has a  == 5  (separate var a from all parents)
+    // it defines nested function second()  which sets new local var a equal to 3 -- wont use parent's a
+    // --> so second() scope has a == 3
+    // second() defines a nested function inside itself third() that *uses* its parent's (second()) var a which is 3
+    // --> so third() scope has a == 3 (same var and value as second())
+    // After second() is invoked, you return to first() scope
+    // --------------------------------------------
+    // Therefore when it unwinds here is what happens
+    // 1) first() invokes second() which invokes third() which alerts
+    // "Four: 3"  (first uses its parent's value for a)
+    // 2) first() alerts using its scope where 'a' is 5 so it alerts
+    // "Five: 5" (first uses it's own local value for a)
     first();
 
   </script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Closure</title>
+</head>
+
+<body>
+  <h2>Check console to see the madness!</h2>
+
+  <script>
+    var cat = {
+      name: "Gus",
+      color: "gray",
+      age: 15,
+
+      printInfo: function () {
+        console.log("inside printInfo()");
+
+        // What will this print?
+        // A: it will print the current state of this entire object - functions just print name since no assoc val.
+        // i.e. {name: "gus", color: "gray", age: 15, printInfo: function}
+        // NOTE: When used inside a function, 
+        // "this" refers to the object on which the function is invoked. – in this case cat ( using cat.printInfo(); )
+        // What you could do in the outer scope is something like
+        // var self = this; and then refer to self in the inner function via closure
+        // Calling a function without a leading parent object will generally
+        // get you the global object which in most browsers means the window object.
+        console.log(this);
+
+        // What will this print?
+        // A: "Name: - "Gus" - Color: - "gray" - Age: -15"
+        // Weird, using comma to separate items logs " - "
+        console.log("Name:", this.name, "Color:", this.color, "Age:", this.age);
+        // console.log("name: " + this.name);
+
+        var nestedFunction = function () {
+          console.log("inside nestedFunction()");
+
+          // What will this print?
+          // A: this is messed up since "this" must change in a nested function in a method in an object
+          // I am in that nested function, the "this" pointer 
+          // is actually pointing to the global "window" object
+          // In general there are three ways to setup the this object:
+
+          // 1. someThing.someFunction(arg1, arg2, argN)        // method invocation
+          // 2. someFunction.call(someThing, arg1, arg2, argN)
+          // 3. someFunction.apply(someThing, [arg1, arg2, argN])
+
+          // Calling a function without a leading parent object will generally
+          // get you the global object which in most browsers means the window object.
+          console.log(this); // logs window object but not sure why
+
+          // What will this print?
+          //  A: these are all undefined so *this* must wont print anything for the properties of this
+          console.log("Name:", this.name, "Color:", this.color, "Age:", this.age);
+        };
+
+        nestedFunction();
+      }
+    };
+
+    cat.printInfo();
+
+    // JAVASCRIPT CLOSURE
+    // ==============================================================================
+    var add = (function () {
+      var counter = 0;
+      return function () {
+        counter += 1;
+        return counter
+      }
+    })();
+
+    console.log("add:" + add);
+    add();
+    add();
+    add();
+    // the counter is now 3 - Explanation
+    // The variable add is assigned the return value of a self-invoking function.
+    // The self-invoking function only runs once. It sets the counter to zero (0), and returns a function expression.
+    // This way add becomes a function. The "wonderful" part is that it can access the counter in the parent scope.
+    // This is called a JavaScript closure. It makes it possible for a function to have "private" variables.
+    // The counter is protected by the scope of the anonymous function, and can only be changed using the add function.
+    // A closure is a function having access to the parent scope, even after the parent function has closed.
+  </script>
+
+</body>
+
+</html>
