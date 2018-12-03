@@ -110,7 +110,7 @@
 
         <!-- Captain Planet Image -->
         <div id='imgDiv'>
-          <img src="assets/captain-planet.jpg" alt="" class="img captain-planet" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px">
+          <img src="assets/captain-planet.png" alt="" class="img captain-planet" style="position:absolute; top:50px; left: 80px; z-index: -20; height: 300px">
         </div>
       </div>
     </div>
@@ -275,13 +275,14 @@
         // create a fire image and show it
         var img;
 
-        img = $("<img src='assets/fire-icon.jpg'>");
+        img = $("<img src='assets/fire-icon.png'>");
 
         img.attr("id", ("imgFire"));
         img.css("z-index", -19);
         img.addClass("imgFire");
-        img.css("top", "100px");
+        img.css("top", "70px");
         img.css("left", "100px");
+        img.css("position", "absolute");
 
         $("#imgDiv").append(img);
 
