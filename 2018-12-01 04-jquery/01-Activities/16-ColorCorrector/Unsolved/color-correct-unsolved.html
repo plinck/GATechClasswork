@@ -75,7 +75,7 @@
 
             // This function sets a random color "word" and a random set of colors "visuals"
             function randColor() {
-                var randomIdx;      // used to collect each rndom number for anything o=yoiu want in array
+                var randomIdx; // used to collect each rndom number for anything o=yoiu want in array
 
                 // Set random target word 
                 randomIdx = Math.floor(Math.random() * colors.length);
@@ -158,8 +158,39 @@
             }
 
             // Get id of element clicked by user
-            $("#color-picker").click(function (event) {
-                
+
+            // NOTE: It did NOT work until I added the "li" to the .on("click") line
+            // Why didnt I have to do that in the fridge app? 
+            // Because the ID color-pciker is just the <ul> and NOT the <li>
+            // if ALL <li> tags had same ID or Class as <ul> it would work like fridge
+            // i.e. give you the specific element that matched the class name of all classes matching
+            // In only "click" it only knows about <ul>
+            // ------
+            // When you dynamically add new elements after the page has loaded,
+            // ---
+            // you need to delegate the events to a parent element.
+            // MOTE: In fride EVERY button shared the same .letter-button class so the onclick could 
+            // get the specific button.  In this case, in order for the click to register, you must 
+            // give it the "li" tag so it gets the <li> UNDER the ul with ID #color-picker
+            // i.e. sicne the click only finds #color-pciker, it has no clue you clicked on the <li> under it
+            $("#color-picker").on("click", "li", function (event) {
+                var colorPickedIdx = $(this).attr("color-idx-picked");
+                var colorPicked = colors[colorPickedIdx];
+
+                console.log("this text: " + $(this).text());
+                console.log("this color-idx-picked: " + $(this).attr("color-idx-picked"));
+                console.log("target: " + event.target.attributes);
+
+                if (colorPicked == targetWordColor) {
+                    alert("You win. Your color word is: " + colorPicked +
+                        " and the color of target is " + targetWordColor);
+                } else {
+                    alert("You LOST. Your color word is: " + colorPicked +
+                        " and the color of target is " + targetWordColor);
+                }
+
+                // start game over
+                reset();
 
             });
 
