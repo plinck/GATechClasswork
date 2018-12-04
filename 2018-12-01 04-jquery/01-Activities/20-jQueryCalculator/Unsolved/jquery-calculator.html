@@ -151,6 +151,15 @@ $(document).ready(function() {
         numberDigits = ["", ""];
     });
 
+    $("#button-clear").on("click", function() {
+        currentNumber = 0;
+        numberDigits = ["", ""];
+
+        $("#first-number").empty();
+        $("#second-number").empty();
+        $("#operator").empty();
+        $("#result").empty();
+    });
 
 });
 
