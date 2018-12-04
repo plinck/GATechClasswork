@@ -55,58 +55,92 @@
         //    headphones it should give back otherBigWeb
         // HINT: you should use recursion
 
-        var count = 0;
-        var latestArrayIndexFound;
-        var latestObjectKeyFound;
 
+        //  Traverse variables to keep track of where you are in the tree of teh object
+        var latestObjectFound;
+        var latestArrayFound;
+        var latestArrayIndexFound;
+        var latestPropertyName;
+
+        // Traverse
+        // Recursively go through the enture object tree.  To simplify, go down  array
+        // objects separate from regular objects - not totally necessary but simplifies some tracking
+        // i.e. indexes vs names of properties
         function traverse(obj, val) {
             if (isArray(obj)) {
-                traverseArray(obj)
+                traverseArray(obj, val)
+                // traverseObject(obj, val)
             } else if ((typeof obj === 'object') && (obj !== null)) {
-                traverseObject(obj)
+                traverseObject(obj, val)
             } else {
-                console.log("val found: " + obj + " in " + latestArrayIndexFound + " under " + latestObjectKeyFound);
-            }
-        }
+                // You are at a leaf so just check and print the value
 
-        function traverseArray(obj) {
-            for (var key in obj) {
-                latestArrayIndexFound = key;
+                if (obj == val) {
+                    console.log("Found your: " + obj + " in object: " + latestObjectFound);
 
-                console.log("latestArrayIndexFound: " + key);
-                traverse(obj[key]);
-            }
-        }
+                    // print it fancy
+                    if (latestArrayFound == undefined) {
+                        console.log(latestObjectFound + "." + latestPropertyName + '=="' + obj + '"');
+                    } else {
+                        console.log(latestObjectFound + "." + latestArrayFound + "[" + latestArrayIndexFound + "]" +
+                            '=="' + obj + '"');
+                    }
 
-        function traverseObject(obj) {
-            for (var key in obj) {
-
-                // hasOwnProperty returns a boolean value indicating whether the object
-                // on which you are calling it has a property with the name of the argument.
-                // So, if this key is a property of obj, traverse through that property
-                if (obj.hasOwnProperty(key)) {
-                    latestObjectKeyFound = key;
-                    console.log("latestObjectKeyFound: " + key);
-
-                    traverse(obj[key])
                 }
             }
         }
 
+        // Convenience to search array separate than object although they will both work
+        function traverseArray(obj, val) {
+            for (var idx in obj) {
+                latestArrayIndexFound = idx; // Index of Array            
+                // console.log("latestArrayIndexFound: " + idx);
+
+                traverse(obj[idx], val); // Value at this index in array
+            }
+            latestArrayIndexFound = undefined;
+        }
+
+        // Search object that is not an array separate although they will both work
+        function traverseObject(obj, val) {
+            for (var propertyName in obj) {
+                // hasOwnProperty returns a boolean value indicating whether the object
+                // has a property with the name passed in argument.
+                // So, if this propertyName is a property of obj, traverse  it 
+                if (obj.hasOwnProperty(propertyName)) {
+                    if (isArray(obj[propertyName])) {
+                        latestPropertyName = undefined;
+
+                        // its actually an array so dont save as last object for putpose of assignment
+                        latestArrayFound = propertyName;
+                    } else if ((typeof obj[propertyName] === 'object') && (obj[propertyName] !== null)) {
+                        latestArrayFound = undefined;
+                        latestPropertyName = undefined;
+                        latestObjectFound = propertyName;
+                    } else {
+                        // its just a regular propertyName so save it
+                        latestArrayFound = undefined;
+                        latestPropertyName = propertyName;
+                    }
+
+                    traverse(obj[propertyName], val)
+                }
+
+            }
+        }
+
+        // just check if it is an array
         function isArray(o) {
             return Object.prototype.toString.call(o) === '[object Array]'
         }
 
         // usage:
+        traverse(theCobWeb, "glasses");
         traverse(theCobWeb, "toothbrush");
+        traverse(theCobWeb, "headphones");
+        traverse(theCobWeb, "homework");
 
-        // findVal(theCobWeb, "item", "toothbrush");
 
-        // console.log(Object.keys(theCobWeb));
-
-        // for (var propertyName in theCobWeb) {
-        //     console.log(propertyName, theCobWeb[propertyName]);
-        // }
     </script>
 
 </body>
