@@ -74,7 +74,77 @@
 
 $(document).ready(function() {
 
-// Your code here...
+    var currentNumber = 0;
+    var numberDigits = ["", ""];
+    var currentOperator;
+
+    // NUMBER IS CLICKED
+    $(".number").on("click", function (event) {
+        numberDigits[currentNumber] = String(numberDigits[currentNumber]) + String($(this).val());      // concat digits
+        if (currentNumber == 0) {
+            $("#first-number").text(numberDigits[currentNumber]);
+        } else {
+            $("#second-number").text(numberDigits[currentNumber]);
+        }
+    });
+
+    $(".operator").on("click", function (event) {
+        currentOperator = $(this).val();
+        switch (currentOperator) {
+            case "plus":
+                $("#operator").text("+");
+                break;
+            case "minus":
+                $("#operator").text("-");
+                break;
+            case "times":
+                $("#operator").text("*");
+                break;
+            case "divide":
+                $("#operator").text("/");
+                break;
+            case "power":
+                $("#operator").text("^");
+                break;
+        }
+
+
+        currentNumber += 1;
+    });
+
+
+    $("#button-equal").on("click", function (event) {
+        var nbr1 = parseInt(numberDigits[0], 10);
+        var nbr2 = parseInt(numberDigits[1], 10);
+
+        switch (currentOperator) {
+            case "plus":
+                var result = nbr1 + nbr2;
+                console.log("plus=" + result);
+                break;
+            case "minus":
+                var result = nbr1 - nbr2;
+                console.log("minus=" + result);
+                break;
+            case "times":
+                var result = nbr1 * nbr2;
+                console.log("times=" + result);
+                break;
+            case "divide":
+                var result = nbr1 / nbr2;
+                console.log("divide=" + result);
+                break;
+            case "power":
+                var result = Math.pow(nbr1, nbr2);
+                console.log("power=" + result);
+                break;
+
+        }
+        $("#result").text(result);
+
+        currentNumber = 0;
+        numberDigits = ["", ""];
+    });
 
 
 });
