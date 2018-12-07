@@ -1,0 +1,66 @@
+<!-- Context.html -->
+<!-- How Timeout's function with this -->
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Context</title>
+
+</head>
+
+<body>
+
+  <!-- Script -->
+  <script type="text/javascript">
+    // We define a person, and include a method that logs his name along with a greeting.
+    var person = {
+      name: "Jeff",
+      sayHi: function () {
+        console.log("Hi, I'm " + this.name);
+        console.log(this);
+      }
+    };
+
+    // When we run it normally, it works like we intended.
+    person.sayHi();
+
+    // Hi, I'm Jeff
+    // But if we include it in a timeout
+    // 
+    // does not work as this detaches function from its context.  Just like if you di the following:
+    // var closeMenu = myObj.closeMenu;  --- detaching the method from the object
+    // closeMenu();
+    setTimeout(person.sayHi, 50);
+
+    // This is a work around since by creating anonymous fucntion to warp it
+    setTimeout(function () {
+      person.sayHi();
+    }, 5000);
+
+    // IS Es6 we could use bind
+    setTimeout(person.sayHi.bind(person),10000);
+
+    // I dont get why this happens, even if you wait to call this 
+    // method after a time, why wouldnt it still have object context?
+    // The reason for this is that the callback function inside setTimeout is in a different lexical environment. 
+    // This is why in ES6+ functions can be defined using =>. 
+    // This is so that the code within a function shares the same scope as the function.
+    // this inside function points to object, for which function was called.
+    // For setTimeout this object is window
+    // In this example this is window because setTimeout() is actually window.setTimeout().
+    //  In your second sample this is your object myelements.
+    // --> Does this mean person.sayHi in timeout uses the scope of setTimeout vs person??
+
+    // We get the following:
+    // Hi, I'm
+    // Window Object
+  </script>
+
+</body>
+
+</html>
