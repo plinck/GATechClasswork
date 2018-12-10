@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Correct Color Picker</title>
+
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <style>
+        #rand-target-color,
+        #color-picker li {
+            font-size: 24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Correct Color Picker</h2>
+        <p>Pick the <b>color</b> of the word shown from the list below it.</p>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+
+                    <!-- Create random target color -->
+                    <span id="rand-target-color">
+                    </span>
+
+                </h3>
+            </div>
+            <div class="card-body">
+
+                <!-- Create colors to pick -->
+                <ul class="list-unstyled" id="color-picker">
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript function that wraps everything
+        $(document).ready(function () {
+
+            // Target word
+            var targetWord;
+
+            // Target word color
+            var targetWordColor;
+
+            // User"s selection
+            var userAnswer;
+
+            // Array for words - should be called colorWords
+            var colors = [
+                "brown",
+                "blue",
+                "magenta",
+                "teal",
+                "coral",
+                "black"
+            ];
+
+            // Array for word colors -= should be called colorWordsColor
+            var colorsOfText = [];
+
+
+            // This function sets a random color "word" and a random set of colors "visuals"
+            function randColor() {
+                var randomIdx; // used to collect each rndom number for anything o=yoiu want in array
+
+                // Set random target word 
+                randomIdx = Math.floor(Math.random() * colors.length);
+                targetWord = colors[randomIdx];
+
+                // Set random target color for that word
+                randomIdx = Math.floor(Math.random() * colors.length);
+                targetWordColor = colors[randomIdx];
+
+                // setup all the color words with random colors
+                // this sets a random list of colors same length as how many word colors there are
+                // thse will be paired up later
+                for (var i in colors) {
+                    randomIdx = Math.floor(Math.random() * colors.length);
+                    colorsOfText[i] = colors[randomIdx];
+                }
+
+            }
+
+            // This function creates the actual "game" logic.
+            function createColorPicker() {
+
+                // Shuffle array - using Fisher-Yates Shuffle
+                function shuffle(arr) {
+                    // go from last to first element
+                    for (let i = arr.length - 1; i > 0; i--) {
+                        // pick a random index
+                        const randomIdx = Math.floor(Math.random() * (i + 1));
+
+                        // Swap the current element with the random element
+                        [arr[i], arr[randomIdx]] = [arr[randomIdx], arr[i]];
+
+                        // Another way to swap the curren element with the random one
+                        // let temp = arr[i];
+                        // arr[i] = arr[randomIdx];
+                        // arr[randomIdx] = temp;
+
+                    }
+                    return arr;
+                }
+                shuffle(colors); // Shuffles array in place
+
+                // Push to text color array - i.e. make a copy of it - dont assign it since its the same
+                // This copies the array color into the colors of text array
+                colorsOfText = colors.slice();
+
+                // Shuffle text color array
+                shuffle(colorsOfText); // Shuffles array in place
+
+                // Loop through all colors in the array
+                // Create element to hold word
+                // Output a word
+                // Make word a random color
+
+                // get the main word first
+                $("#rand-target-color").text(targetWord);
+                $("#rand-target-color").css("color", targetWordColor);
+
+                for (var i in colors) {
+                    var newElem = $("<li>");
+                    newElem.text(colors[i]);
+                    newElem.attr("color-idx-picked", i);
+                    newElem.css("color", colorsOfText[i]);
+
+                    $("#color-picker").append(newElem);
+                }
+
+            }
+
+            // Clear the divs and arrays upon each round.
+            function clear() {
+                $("#color-picker").empty();
+            }
+
+            // Function for resetting colors and setting new colors.
+            function reset() {
+                clear();
+                randColor();
+                createColorPicker();
+            }
+
+            // Get id of element clicked by user
+
+            // NOTE: It did NOT work until I added the "li" to the .on("click") line
+            // Why didnt I have to do that in the fridge app? 
+            // Because the ID color-pciker is just the <ul> and NOT the <li>
+            // if ALL <li> tags had same ID or Class as <ul> it would work like fridge
+            // i.e. give you the specific element that matched the class name of all classes matching
+            // In only "click" it only knows about <ul>
+            // ------
+            // When you dynamically add new elements after the page has loaded,
+            // ---
+            // you need to delegate the events to a parent element.
+            // MOTE: In fride EVERY button shared the same .letter-button class so the onclick could 
+            // get the specific button.  In this case, in order for the click to register, you must 
+            // give it the "li" tag so it gets the <li> UNDER the ul with ID #color-picker
+            // i.e. sicne the click only finds #color-pciker, it has no clue you clicked on the <li> under it
+            $("#color-picker").on("click", "li", function (event) {
+                var colorPickedIdx = $(this).attr("color-idx-picked");
+                var colorPicked = colors[colorPickedIdx];
+
+                console.log("this text: " + $(this).text());
+                console.log("this color-idx-picked: " + $(this).attr("color-idx-picked"));
+                console.log("target: " + event.target.attributes);
+
+                if (colorPicked == targetWordColor) {
+                    alert("You win. Your color word is: " + colorPicked +
+                        " and the color of target is " + targetWordColor);
+                } else {
+                    alert("You LOST. Your color word is: " + colorPicked +
+                        " and the color of target is " + targetWordColor);
+                }
+
+                // start game over
+                reset();
+
+            });
+
+            // Run game
+            reset();
+        });
+    </script>
+</body>
+
+</html>
