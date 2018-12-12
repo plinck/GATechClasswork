@@ -111,15 +111,15 @@
                 //  Find the div with an id of win-lose. Update it with an h2 of "Winner!"
                 //  Find the div with an id of wins. Update it with the value of the wins variable.
                 wins += 1;
-                $("#win-lose").html("<h2>Winner!<h2>")
-                $("#wins")
+                $("#win-lose").html("<h2>Winner!<h2>");
+                $("#wins").html(`<h3>${wins}</h3>`);
             } else {
                 //  Increment losses by one.
                 //  Find the div with an id of win-lose. Update it with an h2 of "Loser!"
                 //  Find the div with an id of losses. Update it with the value of the losses variable.
                 losses += 1;
                 $("#win-lose").html("<h2>Loser!<h2>")
-                $("#losses")
+                $("#losses").html(`<h3>${losses}</h3>`);
             }
 
             // Show computer randomness

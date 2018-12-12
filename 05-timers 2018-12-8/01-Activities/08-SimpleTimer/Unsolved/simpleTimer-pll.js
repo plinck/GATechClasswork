@@ -33,7 +33,7 @@ function tenSeconds() {
 
 function timeUp() {
   // in the element with an id of `time-left` add an h2 saying Time's Up!
-  $("#time-left").html("<h2>Times Up!");
+  $("#time-left").html("<h2>Times Up!</h2>");
 
   // console log done
   console.log("done");
