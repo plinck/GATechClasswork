@@ -2,6 +2,8 @@
 
 // Stock Prices
 var stockPrices = [1.32, 1.14, 1.45, 1.2, 1.34, 1.74, 1.18, 1.9, 1.1];
+// var stockPrices = [135, 34, 25, 22, 21, 4, 1];
+// var stockPrices = [135];
 
 // var functionOne = function() {
 //     // Some code
@@ -15,9 +17,21 @@ var stockPrices = [1.32, 1.14, 1.45, 1.2, 1.34, 1.74, 1.18, 1.9, 1.1];
 
 // Your Biggest Profit function
 function biggestProfit(stockArray, sharesBought) {
-    var boughtAt = stockArray[0];
-    var soldAt = stockArray[0];
-    var currentProfit = 0;
+
+    var boughtAt;
+    var soldAt; // always have to sell next one
+    var currentProfit; // to minimize loss
+
+    if (stockArray.length < 2) {
+        console.log("error, msut have two periods to sell");
+        return (0);
+    } else {
+
+        boughtAt = stockArray[0];
+        soldAt = stockArray[1]; // always have to sell next one
+        currentProfit = soldAt - boughtAt; // to minimize loss
+    }
+
 
     for (let i = 0; i < stockArray.length - 1; i++) {
         // no short sales so only check if you should sell at the next price vs current
@@ -40,7 +54,7 @@ function biggestProfit(stockArray, sharesBought) {
 
 // A Call to your Biggest Profit function.
 let results = Math.round(biggestProfit(stockPrices, 10000));
-console.log(results);
+console.log(`$${results}`);
 
 // NOTE: This should return 7600,
 // because you could have bought it at 1.14 per share
