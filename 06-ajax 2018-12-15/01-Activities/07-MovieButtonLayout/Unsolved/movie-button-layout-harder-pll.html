@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Favorite Movies</title>
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Movie Search</h1>
+
+        <!-- Movies will get dumped here -->
+        <div id="movies-view"></div>
+
+        <form id="movie-form">
+            <label for="movie-input">Add a Movie, Yo!</label>
+            <input type="text" id="movie-input"><br>
+
+            <!-- Button triggers new movie to be added -->
+            <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            "use strict";
+
+            // Generic http call using JSON AJAX
+            function HttpClientAsync(queryURL, aCallback) {
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+                    aCallback(response);
+                });
+            }
+
+            // Initial array of movies
+            var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+
+            // Function for displaying movie data
+            function renderButtons() {
+                $("#movies-view").empty();
+
+                // Loop through the array of movies, then generate buttons for each movie in the array
+                for (let i in movies) {
+                    let movieBtn = $(`<button data-value="${i}">${movies[i]}</button>`);
+                    $("#movies-view").append(movieBtn);
+                }
+            }
+
+            // This function handles events where the add movie button is clicked
+            $("#add-movie").on("click", function (event) {
+                // Allow enter vs pressing submit
+                event.preventDefault();
+
+                var movie = $("#movie-input").val();
+                movies.push(movie);
+
+                renderButtons();
+            });
+
+            // Calling the renderButtons function to display the initial list of movies
+            renderButtons();
+        </script>
+    </div>
+</body>
+
+</html>

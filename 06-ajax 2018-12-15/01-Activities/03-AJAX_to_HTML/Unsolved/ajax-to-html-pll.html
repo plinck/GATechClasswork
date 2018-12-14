@@ -93,7 +93,7 @@
 
         // http call using JSON AJAX
         // Keep movie stuff out of it so I can keep http client pure ans use on any URL
-        function HttpClientAsync(aUrl, aCallback) {
+        function HttpClientAsync(queryURL, aCallback) {
             $.ajax({
                 url: queryURL,
                 method: "GET"
