@@ -37,13 +37,13 @@ function bubbleSort(unsortedArray) {
 } // function
 
 const imageArray = files.filter(el => {
-    if (/(png$|jpg$|jpeg$|gif)/.test(el)) {
+    if (/(png$|jpg$|jpeg$|gif$)/.test(el)) {
         return el;
     }
 });
 
 const movArray = files.filter(el => { 
-    if (/(mov$|avi$|mpeg$|mp4|mpg)/.test(el)) {
+    if (/(mov$|avi$|mpeg$|mp4$|mpg$)/.test(el)) {
         return el;
     }
 });

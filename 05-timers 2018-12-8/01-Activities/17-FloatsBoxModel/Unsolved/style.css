@@ -1,3 +1,10 @@
+* {
+  /* includes all except margin in width, height. Way better than default */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 body {
   font-size: 24px;
   background-color: lightgrey;
@@ -7,6 +14,7 @@ h1 {
   color: white;
   text-align: center;
   background-color: navy;
+  padding: 10px 0 10px 0;
 }
 
 #left {
@@ -14,16 +22,41 @@ h1 {
   width: 75%;
   padding: 2%;
   background-color: cornflowerblue;
+  height: 650px;
+  overflow: auto;
+
 }
 
 #right {
-  float: right;
+  float: left;
   width: 25%;
   padding: 2%;
   background-color: #b20;
+  height: 650px;
+  overflow: auto;
+  /* overflow: hidden;*/
 }
+
+/* clear the floats so the rest of the document flows properly */
+#right::after,
+#helper::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#helper {
+  width: 100%;
+}
+
+#after {
+  padding: 10px 0 10px 0;
+}
+
 
 #text-wrapper {
   width: 1024px;
   background-color: antiquewhite;
+  margin: auto;
+
 }
