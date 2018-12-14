@@ -14,24 +14,35 @@
   <div class="temp"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    // This is our API key. Add your own API key between the ""
-    var APIKey = "";
+    // This is our API key. Add your own API key between the THIS IS MY KEY I CREATED IN IOS Development
+    var APIKey = "fe246de4dfc50dae61fb3da58eb6d4d7";
 
     // Here we are building the URL we need to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=Bujumbura,Burundi&appid=" + APIKey;
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=Bujumbura,Burundi&appid=${APIKey}`;
 
     // We then created an AJAX call
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-
       // Create CODE HERE to Log the queryURL
+      console.log(queryURL);
+
       // Create CODE HERE to log the resulting object
+      console.log(response);
+
       // Create CODE HERE to transfer content to HTML
+      $(".city").text(`City: ${response.name}`);
+      $(".wind").text(`Speed: ${response.wind.speed}, Direction(degree): ${response.wind.deg}`);  // also wihd
+      $(".humidity").text(`Humidty: ${response.main.humidity}`);
+
+
       // Create CODE HERE to calculate the temperature (converted from Kelvin)
       // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
+      let farenheight = (response.main.temp - 273.15) * 1.8 + 32;
+
       // Create CODE HERE to dump the temperature content into HTML
+      $(".temp").text(`Temperature: ${response.main.temp} K, ${farenheight} F`);
 
     });
   </script>

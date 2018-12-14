@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bujumbura Data</title>
+</head>
+
+<body>
+  <!-- Retrieved data will be dumped here -->
+  <div class="city"></div>
+  <div class="wind"></div>
+  <div class="humidity"></div>
+  <div class="temp"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // My Key
+    var APIKey = "fe246de4dfc50dae61fb3da58eb6d4d7";
+
+    // Here we are building the URL we need to query the database
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=Bujumbura,Burundi&appid=${APIKey}`;
+
+    // We then created an AJAX call
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+
+      $(".city").text(`City: ${response.name}`);
+      $(".wind").text(`Speed: ${response.wind.speed}, Direction(degree): ${response.wind.deg}`);  // also wihd
+      $(".humidity").text(`Humidty: ${response.main.humidity}%`);
+      let farenheight = (response.main.temp - 273.15) * 1.8 + 32;
+      farenheight = Math.round(farenheight * 10) / 10;    // Round to 12 digit
+      $(".temp").text(`Temperature: ${farenheight} °F`);
+
+    });
+  </script>
+
+</body>
+
+</html>
