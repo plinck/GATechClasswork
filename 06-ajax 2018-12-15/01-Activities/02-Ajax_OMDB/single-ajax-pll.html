@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Single AJAX</title>
+  <link rel=favicon href="" sizes="16x16" type="image/png">
 </head>
 
 <body>
@@ -11,7 +12,7 @@
   <script type="text/javascript">
     // constructing a queryURL variable we will use instead of the literal string inside of the ajax method
     var title = "space+jam";
-    var queryURL = "https://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy";
+    var queryURL = `https://www.omdbapi.com/?t=${title}&&y=&plot=short&apikey=trilogy`;
 
     $.ajax({
       url: queryURL,
