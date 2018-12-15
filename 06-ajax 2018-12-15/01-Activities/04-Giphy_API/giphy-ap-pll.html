@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <div id="start"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
 
@@ -19,6 +20,14 @@
       method: "GET"
     }).then(function(response) {
       console.log(response);
+      console.log(response.data[0].images.downsized.width);
+      console.log(response.data[0].images.downsized.height);
+      console.log(response.data[0].images.downsized.url);
+
+      img = `<img src="${response.data[0].images.downsized.url}" width=${response.data[0].images.downsized.width}" height="${response.data[0].images.downsized.height}"</img>`;
+
+      $("#start").append("<div>Hi</div>");
+      $("#start").append(img);
     });
   </script>
 

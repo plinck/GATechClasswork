@@ -1,3 +1,4 @@
+`
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,11 +80,10 @@
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            let movieName = response.Title;
-            let movieYear = response.Year;
-            let movieActors = response.Actors;
+            $("tbody").append(
+                `<tr><td>${response.Title}</td><td>${response.Year}</td><td>${response.Actors}</td></tr>`);
 
-            $("tbody").append(`<tr><td>${movieName}</td><td>${movieYear}</td><td>${movieActors}</td></tr>`);
+            //$("tbody").append(`<tr><td>` +response.Title + `</td><td>` + response.Year + `</td><td>` + response.Actors + `</td></tr>`);
 
         });
 
@@ -91,7 +91,7 @@
         // BONUS: Once complete, try to make your code as DRY as possible through the use of functions
         // =============================
 
-        // http call using JSON AJAX
+        // http helper call using JSON AJAX
         // Keep movie stuff out of it so I can keep http client pure ans use on any URL
         function HttpClientAsync(queryURL, aCallback) {
             $.ajax({
@@ -107,14 +107,20 @@
             $(jQTag).append(`<tr><td>${name}</td><td>${year}</td><td>${actors}</td></tr>`);
         }
 
+        function lookupMovie(movie) {
+            queryURL = `https://www.omdbapi.com/?t=${movie}&y=&plot=short&apikey=trilogy`;
+
+            HttpClientAsync(queryURL, function (response) {
+                movieRowRender("tbody", response.Title, response.Year, response.Actors);
+            });
+
+        }
+
+        // ==================================================
         // Main  -
         // Pick movie and format URL
-        movie = "Gladiator";
-        queryURL = `https://www.omdbapi.com/?t=${movie}&y=&plot=short&apikey=trilogy`;
-
-        HttpClientAsync(queryURL, function (response) {
-            movieRowRender("tbody", response.Title, response.Year, response.Actors);
-        });
+        // ==================================================
+        lookupMovie("Gladiator");
 
     </script>
 </body>

@@ -1,4 +1,6 @@
 // Use the array provided below.
+"use strict";
+
 var unsortedArr = [
     1, 326, 251, 24, 284, 364, 287, 74, 89,
     63, 455, 130, 408, 378, 333, 49, 69, 335,
@@ -66,15 +68,20 @@ var unsortedArr = [
 // by doing this the lowest one gets push towards the front at least one index for each
 // index of the outer loop - i.e. one pass of the inner
 function bubbleSort(unsortedArray) {
-    var sortedArr = unsortedArray.slice(0);       // Make a COPY of the array to leave unsorted in place
-    var i; // outer loop
-    var j; // inner loop
+    var sortedArr = unsortedArray.slice(0); // Make a COPY of the array to leave unsorted in place
+    let i; // outer loop
+    let j; // inner loop
+    let alreadySorted = false; // allows you to stop if the whole thing is already sorted
 
-    for (i = 0; i < sortedArr.length; i++) {
-        for (j = 0; j < sortedArr.length - 1; j++) {
-            if (sortedArr[j] > sortedArr[j + 1]) {
-                // swap if items in wrong order
-                [sortedArr[j], sortedArr[j + 1]] = [sortedArr[j + 1], sortedArr[j]];
+    while (!alreadySorted) {
+        alreadySorted = true;
+        for (i = 0; i < sortedArr.length; i++) {
+            for (j = 0; j < sortedArr.length - 1; j++) {
+                if (sortedArr[j] > sortedArr[j + 1]) {
+                    // swap if items in wrong order
+                    alreadySorted = false;
+                    [sortedArr[j], sortedArr[j + 1]] = [sortedArr[j + 1], sortedArr[j]];
+                }
             }
         }
     }
@@ -88,9 +95,9 @@ startID.innerHTML = unsortedArr;
 
 // When the user clicks the `button` in index.html,
 // the sorted result should be displayed in the `#result` div.
-document.getElementById("go").onclick = function() {
+document.getElementById("go").onclick = function () {
     let resultID = document.getElementById("result");
-    resultID.innerHTML = bubbleSort(unsortedArr);      
+    resultID.innerHTML = bubbleSort(unsortedArr);
 };
 
 
