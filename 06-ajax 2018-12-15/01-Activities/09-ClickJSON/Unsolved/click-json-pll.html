@@ -30,6 +30,10 @@
       <input id="add-movie" type="submit" value="Add a Movie, Yo!">
     </form>
 
+    <!-- Movies will get dumped here -->
+    <div id="movies-view"></div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
@@ -39,7 +43,19 @@
       function displayMovieInfo() {
 
         // YOUR CODE GOES HERE!!! HINT: You will need to create a new div to hold the JSON.
+        let movieName = $(this).attr("data-name");
+        console.log(movieName);
 
+        let titleTag = $(`<div class="title">${movieName}</div>`);
+        titleTag.css("text-align", "center");
+        let cardTag = $(`<div>`);
+        cardTag.css("display", "flex");
+        cardTag.css("flex-direction", "column");
+        cardTag.css("align-items", "center");
+
+        cardTag.append(titleTag);
+
+        $("#movies-view").html(cardTag);
       }
 
       // Function for displaying movie data
@@ -67,7 +83,7 @@
       }
 
       // This function handles events where one button is clicked
-      $("#add-movie").on("click", function(event) {
+      $("#add-movie").on("click", function (event) {
         event.preventDefault();
 
         // This line grabs the input from the textbox
