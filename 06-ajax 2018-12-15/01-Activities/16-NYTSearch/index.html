@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div>
+        </div>
+        <div>
+            <h2>New York Times Search</h2>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="main-container">
+        <!-- Main Content Container -->
+        <section class="row">
+            <div class="section-header row">
+                <div class="col-12">Search Form</div>
+            </div>
+            <div class="row">
+                <!-- form -->
+                <div id="searchForm" class="row">
+                    <form id="infoSubmit" action="#" method="post" enctype="text/plain">
+                        <p>Search Term</p>
+                        <input type="text" name="searchTerm" placeholder="Article" /><br>
+                        <p>Number of Records to Retrieve</p>
+                        <input type="text" name="nbrRecords" placeholder="1" /><br>
+                        <p>Start Year</p>
+                        <input type="text" name="startYear" placeholder="2017" /><br>
+                        <p>End Year</p>
+                        <input type="text" name="endYear" placeholder="2019" /><br>
+                        <p>Message</p>
+                        <textarea name="message" placeholder="Fill in your message here..." rows="10"></textarea><br>
+                        <button id="submit" type="submit" value="Submit">Search</button>
+                        <button id="reset" type="reset" value="Clear">Clear</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script type="text/javascript" src="assets/js/game.js"></script>
+    </script>
+
+</body>
+
+</html>

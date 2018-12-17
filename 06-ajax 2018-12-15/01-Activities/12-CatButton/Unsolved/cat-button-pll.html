@@ -12,32 +12,33 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-    //
+    // waits for a click on the button with id cat-button
     $("#cat-button").on("click", function() {
 
-      //
+      // builds the request url to get a random gif from giphy
       var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
 
-      //
+      // use jquery to make the request, get the response and convert JSON to java object
+      // jquery must using JSON.parse under teh covers since response is in a javascript object
       $.ajax({
         url: queryURL,
         method: "GET"
       })
 
-      //
+      // when the http request returns the reponse, this callback is invoked.
         .then(function(response) {
 
-        //
+        // get the URl for the image of the gif
           var imageUrl = response.data.image_original_url;
 
-          //
+          // build the html tag for displaying the image
           var catImage = $("<img>");
 
-          //
+          // define the src attribute to be the url retrieved and give it and alt Id called 'cat image'
           catImage.attr("src", imageUrl);
           catImage.attr("alt", "cat image");
 
-          //
+          // put the image to the top of the list of images in the #images tag (vs append which puts at the end)
           $("#images").prepend(catImage);
         });
     });
