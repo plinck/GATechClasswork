@@ -50,7 +50,7 @@ function searchArticles(searchTerm, nbrRecords, startYear, endYear) {
         dataType: 'JSON',
         success: function (result) {
             console.log(result);
-            articleRender(result.response.docs);
+            articleRender(result.response.docs, nbrRecords);
         },
         error: function (err) {
             console.log('error:' + err);
@@ -60,21 +60,46 @@ function searchArticles(searchTerm, nbrRecords, startYear, endYear) {
 }
 
 // Display articles retrieved
-function articleRender(articles) {
+function articleRender(articles, nbrRecords) {
     let articleNbr = 0;
+    $(".articles").empty();
+    $("#errorMessage").empty();
 
     console.log(articles);
 
-    $(".articleCard").attr("data-value", articleNbr);
-    $(".articleCard").attr("data-key", articles[articleNbr]._id);
-    $(".articleCard .articleHeadline").html(articles[articleNbr].headline.main);
-    $(".articleCard .urlName").html(articles[articleNbr].headline.main);
-    $(".articleCard .articleURL").attr("href", articles[articleNbr].web_url);
-    $(".articleCard .articleSnippet").html(articles[articleNbr].snippet);
+    for (let articleNbr = 0; articleNbr < articles.length && articleNbr < nbrRecords; articleNbr += 1) {
+        let newCard = cardRender(articles[articleNbr]);
 
-    // change to article image if there is one (in multimedia array)
-    $(".articleCard .articleImage").attr("src", "assets/images/defaultArticleImg.png");
+        $(".articles").append(newCard);
+    }
+}
 
+function cardRender(article) {
+    let cardDiv = "";
+    let imageURL = "assets/images/defaultArticleImg.png";
+    let caption = "Article Image";
+
+    if (article.multimedia.length > 0) {
+        // change to article image if there is one (in multimedia array)
+        imageURL = `https://www.nytimes.com/${article.multimedia[0].url}`;
+        if (article.multimedia[0].url != null) {
+            caption = article.multimedia[0].url;
+        }
+    }
+
+    cardDiv += `<a class="articleURL" href="${article.web_url}">`;
+    cardDiv += `<div class="articleCard card">`;
+    cardDiv += `<div class="cardHeader articleHeadline">${article.headline.main}</div>`;
+    cardDiv += `<div class="cardBody">`;
+    cardDiv += `<div class="articleSnippet">${article.snippet}</div>`;
+    cardDiv += `<img class="articleImage" src="${imageURL}" alt="${caption}"></img>`;
+    // cardDiv += `<div><a class="urlName articleURL" href="${article.web_url}">${article.headline.main}</a></div>`;
+    cardDiv += `</div>`;
+    cardDiv += `</div>`;
+    cardDiv += ` </a>`;
+
+
+    return cardDiv;
 }
 
 function errorRender(err) {

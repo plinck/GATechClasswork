@@ -133,6 +133,8 @@ input[type=submit] {
 .card {
     display: inline-block;
     position: relative;
+    max-width: 300px;
+
     border-radius: 8px;
     margin: 4px;
     background-color: rgba(255,255,255,.75);
@@ -146,16 +148,21 @@ input[type=submit] {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     font-size: 1.5em;
-
 }
 
 .cardBody {
     color: grey;
+    font-size: 1.2em;
 }
 
+.articleSnippet {
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 4px;
+  }
 /* Constrain img and put on bottom */
 .articleImage {
-    /* width: 175px; */
+    width: 300px;
     /* height: 175px; */
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -261,17 +268,25 @@ RESPONSIVENESS
         margin: 2px;
     }
 
-    .characterImage {
-        width: 125px;
-        height: 125px;
+    .card {
+        max-width: 150px;
+    }
+
+    .articleImage {
+        width: 150px;
+        height: 150px;
     }
     
 }
 
 @media screen and (min-width: 641px) and (max-width: 768px) {
-    .characterImage {
-        width: 150px;
-        height: 150px;
+    .card {
+        max-width: 200px;
+    }
+
+    .articleImage {
+        width: 200px;
+        height: 200px;
     }
 }
 
