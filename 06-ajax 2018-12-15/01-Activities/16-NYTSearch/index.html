@@ -35,26 +35,34 @@
                 <div id="searchForm" class="row">
                     <form id="infoSubmit" action="#" method="post" enctype="text/plain">
                         <p>Search Term</p>
-                        <input type="text" name="searchTerm" placeholder="Article" /><br>
+                        <input id="searchTerm" type="text" name="searchTerm" placeholder="Article" /><br>
                         <p>Number of Records to Retrieve</p>
-                        <input type="text" name="nbrRecords" placeholder="1" /><br>
+                        <input id="nbrRecords" type="text" name="nbrRecords" placeholder="1" /><br>
                         <p>Start Year</p>
-                        <input type="text" name="startYear" placeholder="2017" /><br>
+                        <input id="startYear" type="text" name="startYear" placeholder="2017" /><br>
                         <p>End Year</p>
-                        <input type="text" name="endYear" placeholder="2019" /><br>
-                        <p>Message</p>
-                        <textarea name="message" placeholder="Fill in your message here..." rows="10"></textarea><br>
+                        <input id="endYear" type="text" name="endYear" placeholder="2019" /><br>
                         <button id="submit" type="submit" value="Submit">Search</button>
                         <button id="reset" type="reset" value="Clear">Clear</button>
                     </form>
                 </div>
-
+                <div class="section-header row">
+                    <div class="col-12">Top Articles</div>
+                </div>
+                <article class="row">
+                    <div class="article-header row">
+                        <div>article header ...</div>
+                    </div>
+                    <div class="row">
+                        <div>article body ...</div>
+                    </div>
+                </article>
             </div>
         </section>
 
     </main>
 
-    <script type="text/javascript" src="assets/js/game.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
     </script>
 
 </body>
