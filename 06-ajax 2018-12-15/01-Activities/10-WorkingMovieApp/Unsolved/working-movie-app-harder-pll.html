@@ -60,7 +60,8 @@
 
             function movieRender(title, poster, rated, ratings, releaseDate, plot) {
                 let titleTag = $(`<div class="title">${title}</div>`);
-                titleTag.css("text-align", "center");
+                titleTag.css("text-align", "left");
+                titleTag.css("font-size", "1.7em");
 
                 let ratingsTag = `<div></div>`;                    
                 if (ratings.length > 0) {
@@ -75,7 +76,7 @@
                 let cardTag = $(`<div>`);
                 cardTag.css("display", "flex");
                 cardTag.css("flex-direction", "column");
-                cardTag.css("align-items", "center");
+                cardTag.css("align-items", "left");
 
                 cardTag.append(titleTag);
                 cardTag.append(ratingsTag);
@@ -85,7 +86,6 @@
                 cardTag.append(plotTag);
 
                 $("#movies-view").html(cardTag);
-
             }
 
             // Function for displaying movie data

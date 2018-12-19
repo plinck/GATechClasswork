@@ -18,7 +18,7 @@ var animals = ["Dog", "Cat", "Giraff"];
 
 
 function getGIPHYs(animal) {
-    var requestURL = `https://api.giphy.com/v1/gifs/search?q=${animal}&limit=${maxNbrGifs}&Rating=${ratingFilter}&api_key=dc6zaTOxFJmzC&limit=10`;
+    var requestURL = `https://api.giphy.com/v1/gifs/search?q=${animal}&limit=${maxNbrGifs}&rating=${ratingFilter}&api_key=dc6zaTOxFJmzC&limit=10`;
 
     console.log(`Request: ${requestURL}`);
 
