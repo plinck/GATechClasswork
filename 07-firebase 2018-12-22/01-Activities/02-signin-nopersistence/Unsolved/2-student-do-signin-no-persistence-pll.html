@@ -82,20 +82,30 @@
   <!-- Script -->
   <script>
     // ========================================= START CODING BELOW!!
+    "use strict"
 
     // Capture Button Click
-    $("#add-user").on("click", function(event) {
+    $("#add-user").on("click", function (event) {
       event.preventDefault();
 
       // Capture User Inputs and store them into variables
-
+      let name = $("#name-input").val();
+      let email = $("#email-input").val();
+      let age = $("#age-input").val();
+      let comments = $("#comment-input").val();
 
       // Console log each of the user inputs to confirm we are receiving them correctly
+      console.log(`name: ${name}, email: ${email}, age: ${age}\ncomments: ${comments}`);
 
 
       // Output all of the new information into the relevant HTML sections
-    });
 
+      $("#name-display").text(name);
+      $("#email-display").text(email);
+      $("#age-display").text(age);
+      $("#comment-display").text(comments);
+
+    });
   </script>
 
 </body>
