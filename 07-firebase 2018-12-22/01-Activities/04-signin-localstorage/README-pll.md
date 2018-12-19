@@ -11,6 +11,6 @@
 * If your code worked it should save/display the last inputted user even if the tab is closed or if the page is closed and reopened.
 
 ### PAUL NOTE / TODO
-* does not work in safari - I get a CORS type security issue when trying to use local storage
-* Answer may be to Set "Disable local file restrictions" in the Develop menu.
-* Since it shouldnt happen when running local web server vs just opening HTML file
+
+* Does not work in safari - I get a CORS type security issue when trying to use local storage
+  * Answer may be to Set "Disable local file restrictions" in the Develop menu. Since it shouldnt happen when running local web server vs just opening HTML file
