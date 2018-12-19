@@ -12,3 +12,5 @@
 
 ### PAUL NOTE / TODO
 * does not work in safari - I get a CORS type security issue when trying to use local storage
+* Answer may be to Set "Disable local file restrictions" in the Develop menu.
+* Since it shouldnt happen when running local web server vs just opening HTML file
