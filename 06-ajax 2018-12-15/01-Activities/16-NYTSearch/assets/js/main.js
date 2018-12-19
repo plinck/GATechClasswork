@@ -112,6 +112,10 @@ function errorRender(err) {
 $(document).ready(function () {
 
     $("#submit").on("click", function () {
+        // make it so it wont refresh the page when form submits
+        // eliminating form wrapper tag also does this
+        event.preventDefault();
+
         // This line grabs the input from the textbox
         let searchTerm = $("#searchTerm").val().trim();
         let nbrRecords = $("#nbrRecords").val().trim();

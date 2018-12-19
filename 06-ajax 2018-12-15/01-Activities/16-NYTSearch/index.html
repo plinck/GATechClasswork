@@ -32,18 +32,20 @@
             </div>
             <div class="row">
                 <!-- form -->
-                <div id="searchForm" class="row">
-                    <p>Search Term</p>
-                    <input id="searchTerm" type="text" name="searchTerm" placeholder="Article" /><br>
-                    <p>Number of Records to Retrieve</p>
-                    <input id="nbrRecords" type="text" name="nbrRecords" placeholder="1" /><br>
-                    <p>Start Year</p>
-                    <input id="startYear" type="text" name="startYear" placeholder="2017" /><br>
-                    <p>End Year</p>
-                    <input id="endYear" type="text" name="endYear" placeholder="2019" /><br>
-                    <button id="submit" type="submit" value="Submit">Search</button>
-                    <button id="reset" type="reset" value="Clear">Clear</button>
-                </div>
+                <form id="infoSubmit" action="" method="post" enctype="text/plain">
+                    <div id="searchForm" class="row">
+                        <p>Search Term</p>
+                        <input id="searchTerm" type="text" name="searchTerm" placeholder="Article" /><br>
+                        <p>Number of Records to Retrieve</p>
+                        <input id="nbrRecords" type="text" name="nbrRecords" placeholder="1" /><br>
+                        <p>Start Year</p>
+                        <input id="startYear" type="text" name="startYear" placeholder="2017" /><br>
+                        <p>End Year</p>
+                        <input id="endYear" type="text" name="endYear" placeholder="2019" /><br>
+                        <button id="submit" type="submit" value="Submit">Search</button>
+                        <button id="reset" type="reset" value="Clear">Clear</button>
+                    </div>
+                </form>
                 <div class="section-header row">
                     <div class="col-12">Top Articles</div>
                     <div id="errorMessage" class="col-12"></div>
@@ -53,8 +55,8 @@
                     <div class="articleCard card" data-value="0" data-key="article-id">
                         <div class="cardHeader articleHeadline">Headline</div>
                         <div class="cardBody">
-                                <div class="articleSnippet">Snippet</div>
-                                <a class="articleURL" href="">
+                            <div class="articleSnippet">Snippet</div>
+                            <a class="articleURL" href="">
                                 <img class="articleImage" src="assets/images/defaultArticleImg.png" alt="Article Image"></img>
                             </a>
                         </div>

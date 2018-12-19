@@ -52,8 +52,14 @@
 
                 // Loop through the array of movies, then generate buttons for each movie in the array
                 for (let i in movies) {
-                    let movieBtn = $(`<button data-value="${i}">${movies[i]}</button>`);
-                    $("#movies-view").append(movieBtn);
+                    // let movieBtn = $(`<button data-value="${i}">${movies[i]}</button>`);
+                    // $("#movies-view").append(movieBtn);
+
+                    // or
+                    let movieAltButton = $('<button>');
+                    movieAltButton.attr("data-value", i);
+                    movieAltButton.text(movies[i]);
+                    $("#movies-view").append(movieAltButton);
                 }
             }
 
