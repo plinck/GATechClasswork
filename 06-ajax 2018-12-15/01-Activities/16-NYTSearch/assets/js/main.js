@@ -31,14 +31,27 @@ function searchArticles(searchTerm, nbrRecords, startYear, endYear) {
     // to return records 0-9 set page=0, to return records 10-19 set page=1
     let page = Math.floor(nbrRecords / 10);
 
+    if (startYear.length > 3) {
+        startYear = startYear.slice(0, 4); // make sure only 4 digits
+    } else {
+        if (startYear.length < 3)
+            startYear = "";
+    }
+    if (endYear.length > 3) {
+        endYear = endYear.slice(0, 4); // make sure only 4 digits
+    } else {
+        if (endYear.length < 3)
+            endYear = "";
+    }
+
     // retrict return content to stuff we want to keep it as small as possible
     // query patramer 'fl' - command delimited list
 
     requestURL += '?' + $.param({
         'api-key': APIKEY,
         'q': searchTerm,
-        'begin_date': startYear,
-        'end_date': endYear,
+        'begin_date': `${startYear}0101`,
+        'end_date': `${endYear}1231`,
         'page': page
     });
     console.log(`Request: ${requestURL}`);
