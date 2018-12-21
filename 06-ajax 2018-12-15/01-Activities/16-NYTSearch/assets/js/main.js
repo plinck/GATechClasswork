@@ -87,6 +87,7 @@ function articleRender(articles, nbrRecords) {
     }
 }
 
+// ewjrhqwjor
 function cardRender(article) {
     let cardDiv = "";
     let imageURL = "assets/images/defaultArticleImg.png";
