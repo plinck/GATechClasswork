@@ -58,7 +58,8 @@
     database.ref().on("value", function(snapshot) {
       console.log(snapshot.val());
 
-      clickCounter = snapshot.val().clickCount;
+      clickCounter = snapshot.val().clickCount;   // NOTE:  val() is like a dictionary snapshot  i.e. val().click 
+                                                  // ii.e val() has a bunch of key/va pairs for current snapshot 
 
       $("#click-value").text(snapshot.val().clickCount);
     }, function(errorObject) {
