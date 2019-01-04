@@ -37,13 +37,15 @@
   <!-- Script -->
   <script>
     // Initialize Firebase and change the values of the config values with your own Firebase config values.
+    // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyC9QlOZmk3D4Wt8kAVji0-BO4jsYDvwwLY",
-      authDomain: "fir-multiple-properties.firebaseapp.com",
-      databaseURL: "https://fir-multiple-properties.firebaseio.com",
-      storageBucket: "fir-multiple-properties.appspot.com"
+      apiKey: "AIzaSyAGv1ljyFxCUDvh3nm4uVV1-eO4R2A_cZc",
+      authDomain: "paulsclassdb.firebaseapp.com",
+      databaseURL: "https://paulsclassdb.firebaseio.com",
+      projectId: "paulsclassdb",
+      storageBucket: "paulsclassdb.appspot.com",
+      messagingSenderId: "823304786936"
     };
-
     firebase.initializeApp(config);
 
     // Create a variable to reference the database
@@ -51,9 +53,9 @@
 
     // Initial Variables (SET the first set IN FIREBASE FIRST)
     // Note remember to create these same variables in Firebase!
-    var name = "";
-    var age = "";
-    var phone = "";
+    var name = "Paul";
+    var age = "53";
+    var phone = "555-443-1212";
 
     // Click Button changes what is stored in firebase
     $("#click-button").on("click", function(event) {

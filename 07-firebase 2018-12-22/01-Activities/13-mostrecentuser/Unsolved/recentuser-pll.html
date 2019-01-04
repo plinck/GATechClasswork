@@ -63,10 +63,10 @@
             Most Recent Member
           </div>
           <div class="card-body" id="recent-member">
-            <h2 id="name-display">Jimmy John</h2>
-            <h4 id="email-display">Email: jimmy@john.edu</h4>
-            <h4 id="age-display">Age: 27</h4>
-            <p id="comment-display">I'm signing up, because I want to spread sandwiches to the world.</p>
+            <h2 id="name-display"></h2>
+            <h4 id="email-display"></h4>
+            <h4 id="age-display"></h4>
+            <p id="comment-display"></p>
           </div>
         </div>
       </div>
@@ -79,36 +79,57 @@
   <script src="https://code.jquery.com/jquery.js"></script>
 
   <!-- LINK TO FIREBASE GOES HERE -->
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 
   <!-- Script -->
   <script>
     //  START CODING BELOW!!
+    var config = {
+      apiKey: "AIzaSyAGv1ljyFxCUDvh3nm4uVV1-eO4R2A_cZc",
+      authDomain: "paulsclassdb.firebaseapp.com",
+      databaseURL: "https://paulsclassdb.firebaseio.com",
+      projectId: "paulsclassdb",
+      storageBucket: "paulsclassdb.appspot.com",
+      messagingSenderId: "823304786936"
+    };
+    firebase.initializeApp(config);
 
-    // Initialize Firebase
-
+    // Create a variable to reference the database
+    var database = firebase.database();
 
     // Create a variable to reference the database
 
 
     // Capture Button Click
-    $("#add-user").on("click", function(event) {
+    $("#add-user").on("click", function (event) {
       // Don't refresh the page!
       event.preventDefault();
 
       // YOUR TASK!!!
+      // Capture User Inputs and store them into variables
+      let userObj = {};
+      userObj.name = $("#name-input").val();
+      userObj.email = $("#email-input").val();
+      userObj.age = $("#age-input").val();
+      userObj.comments = $("#comment-input").val();
 
       // Code in the logic for storing and retrieving the most recent user.
+      database.ref().set(userObj);
 
       // Don't forget to provide initial data to your Firebase database.
 
     });
 
-
-    // Firebase watcher + initial loader HINT: .on("value")
-
-
-    // Create Error Handling
+    // At the initial load and on subsequent data value changes, get a snapshot of the current data. (I.E FIREBASE HERE)
+    database.ref().on("value", function (snapshot) {
+      userOBJ = snapshot.val();
+      $("#name-display").text(userOBJ.name);
+      $("#email-display").text(userOBJ.email);
+      $("#age-display").text(userOBJ.age);
+      $("#comment-display").text(userOBJ.comments);
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
 
   </script>
 
