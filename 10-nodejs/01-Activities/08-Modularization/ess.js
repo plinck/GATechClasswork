@@ -18,6 +18,7 @@ var nonessentials = {
 // We can access them from other files using the 'require' keyword.
 
 module.exports = {
-  essentials: essentials,
-  niceToHaves: niceToHaves
+  essentials,
+  niceToHaves,
+  nonessentials
 };
