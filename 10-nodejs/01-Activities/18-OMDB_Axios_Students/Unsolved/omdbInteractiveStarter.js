@@ -8,27 +8,23 @@
 // ---------------------------------------------------------------------------------------------------------
 
 // Include the axios npm package (Don't forget to run "npm install axios" in this folder first!)
-// ...
+var axios = require("axios");
 
-
-// Grab or assemble the movie name and store it in a variable called "movieName"
-var movieName = "";
-// ...
-
-
-// Then run a request with axios to the OMDB API with the movie specified
+// Run the axios.get function...
+// The axios.get function takes in a URL and returns a promise (just like $.ajax)
+var movieName = process.argv[2];
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
+axios.get(queryUrl)
+    .then(
+        function (response) {
+            // If the axios was successful...
 
-
-// This line is just to help us debug against the actual URL.
-console.log(queryUrl);
-
-
-// Then create a request with axios to the queryUrl
-// ...
-
-// If the request with axios is successful
-// ...
-
-// Then log the Release Year for the movie
-// ...
+            // console.log(response.data);
+            console.log(`Title: ${response.data.Title}`);
+            console.log(`Year: ${response.data.Year}`);
+            console.log(`Rated: ${response.data.Rated}`);
+            console.log(`Genre: ${response.data.Genre}`);
+            console.log(`Actors: ${response.data.Actors}`);
+            console.log(`Website: ${response.data.Website}`);
+        }
+    );
