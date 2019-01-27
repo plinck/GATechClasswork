@@ -7,27 +7,48 @@
 
 // ========================================================================================================================
 
+// Instructions:
+// Build a Node application that takes in a location input via the command line, then geocodes it using the geocoder NPM package.
+// Then console.log the geocoding information for display.
+
+// Easier: User will provide the city and state in the following format: "Atlanta, GA", "Houston, TX"
+// Slightly More Challenging: User will provide the address in any format: "151 Sip Ave Jersey City, NJ", "Austin, TX", etc.
+
+// All: Be sure to console log the output using JSON.stringify in "pretty-print" format.
+
+// ========================================================================================================================
+
 // Include the node-geocoder NPM package (Remember to run "npm install node-geocoder"!)
 var NodeGeocoder = require("node-geocoder");
+var inquirer = require("inquirer");
 
-// Replace with your mapquest consumer API key
 var options = {
-  provider: "mapquest",
-  apiKey: "YOUR-MAPQUEST-API-CONSUMER-KEY"
+  provider: 'mapquest',
+  httpAdapter: 'https', // Default
+  apiKey: 'LuHASw8wc4G766zIKQVc0PtvdUoYpX12', // for Mapquest, OpenCage, Google Premier
+  formatter: null // 'gpx', 'string', ...
 };
 
 var geocoder = NodeGeocoder(options);
 
-// Get all elements in process.argv, starting from index 2 to the end
-// Join them into a string to get the space delimited address
-var address = process.argv.slice(2).join(" ");
+// ========================================================================
+// Load the NPM Package inquirer
 
-// Then use the Google Geocoder to geocode the address
-geocoder.geocode(address, function(err, data) {
+// Create a "Prompt" with a series of questions.
+inquirer
+  .prompt([
+    // Here we create a basic text prompt.
+    {
+      type: "input",
+      message: "What is your city?",
+      name: "cityName"
+    }
+  ])
+  .then(function (response) {
+    // Using callback
+    geocoder.geocode(response.cityName, (err, res) => {
+      console.log(err);
+      console.log(JSON.stringify(res, null, 2));
+    });
 
-  // Then console log the result and stringify it.
-  // Note the argument of "2" being included in the JSON stringify. This makes the JSON output pretty.
-  // See link here: http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
-  console.log(JSON.stringify(data, null, 2));
-});
-
+  });

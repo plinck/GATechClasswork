@@ -12,23 +12,20 @@
 // Include the node-geocoder NPM package (Remember to run "npm install node-geocoder"!)
 var NodeGeocoder = require("node-geocoder");
 
-// Replace with your mapquest consumer API key
 var options = {
-  provider: "mapquest",
-  apiKey: "YOUR-MAPQUEST-API-CONSUMER-KEY"
+  provider: 'mapquest',
+  httpAdapter: 'https', // Default
+  apiKey: 'LuHASw8wc4G766zIKQVc0PtvdUoYpX12', // for Mapquest, OpenCage, Google Premier
+  formatter: null         // 'gpx', 'string', ...
 };
-
-// Create a geocoder object that can query the mapquest API
+ 
 var geocoder = NodeGeocoder(options);
 
+let cityName = process.argv[2];
+console.log(cityName);
 
-
-// Take in the command line arguments
-
-
-
-// Build your address as an array or string
-
-
-
-// Then use the geocoder object to search the address
+// Using callback
+geocoder.geocode(cityName, (err, res) => {
+  console.log(err);
+  console.log(JSON.stringify(res, null, 2));
+});
