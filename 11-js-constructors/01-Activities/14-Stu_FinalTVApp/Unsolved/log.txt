@@ -1,0 +1,9 @@
+Actor Name: Sean Connery Birthday: 1930-08-30 Gender: Male Country: null TV Maze URL: http://api.tvmaze.com/people/102486
+------------------------------------------------------------
+
+Actor Name: Connor Dean Birthday: null Gender: Male Country: [object Object] TV Maze URL: http://api.tvmaze.com/people/216361
+------------------------------------------------------------
+
+Actor Name: Sean Connor Roche Birthday: null Gender: null Country: null TV Maze URL: http://api.tvmaze.com/people/30444
+------------------------------------------------------------
+

@@ -1,7 +1,7 @@
 {
-  "name": "14-blah",
+  "name": "13-stu_findshow",
   "version": "1.0.0",
-  "description": "Blah blah",
+  "description": "In this activity we will be adding functionality to search the TV Maze API to find a show passed in as a command line argument.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

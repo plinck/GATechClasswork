@@ -1,0 +1,66 @@
+[
+    {
+        "score": 78.49002,
+        "person": {
+            "id": 102486,
+            "url": "http://www.tvmaze.com/people/102486/sean-connery",
+            "name": "Sean Connery",
+            "country": null,
+            "birthday": "1930-08-30",
+            "deathday": null,
+            "gender": "Male",
+            "image": {
+                "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/159/398910.jpg",
+                "original": "http://static.tvmaze.com/uploads/images/original_untouched/159/398910.jpg"
+            },
+            "_links": {
+                "self": {
+                    "href": "http://api.tvmaze.com/people/102486"
+                }
+            }
+        }
+    },
+    {
+        "score": 9.005892,
+        "person": {
+            "id": 216361,
+            "url": "http://www.tvmaze.com/people/216361/connor-dean",
+            "name": "Connor Dean",
+            "country": {
+                "name": "United States",
+                "code": "US",
+                "timezone": "America/New_York"
+            },
+            "birthday": null,
+            "deathday": null,
+            "gender": "Male",
+            "image": {
+                "medium": "http://static.tvmaze.com/uploads/images/medium_portrait/168/422269.jpg",
+                "original": "http://static.tvmaze.com/uploads/images/original_untouched/168/422269.jpg"
+            },
+            "_links": {
+                "self": {
+                    "href": "http://api.tvmaze.com/people/216361"
+                }
+            }
+        }
+    },
+    {
+        "score": 7.970129,
+        "person": {
+            "id": 30444,
+            "url": "http://www.tvmaze.com/people/30444/sean-connor-roche",
+            "name": "Sean Connor Roche",
+            "country": null,
+            "birthday": null,
+            "deathday": null,
+            "gender": null,
+            "image": null,
+            "_links": {
+                "self": {
+                    "href": "http://api.tvmaze.com/people/30444"
+                }
+            }
+        }
+    }
+]
