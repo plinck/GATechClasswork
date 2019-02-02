@@ -1,0 +1,1 @@
+This message is logged to file inside callback os fs.writeFile
