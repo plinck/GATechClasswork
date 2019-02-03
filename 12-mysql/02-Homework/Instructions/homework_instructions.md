@@ -72,11 +72,11 @@ If you haven't written a markdown file yet, [click here for a rundown](https://g
   * List a set of menu options:
 
     * View Products for Sale
-    
+
     * View Low Inventory
-    
+
     * Add to Inventory
-    
+
     * Add New Product
 
   * If a manager selects `View Products for Sale`, the app should list every available item: the item IDs, names, prices, and quantities.
@@ -110,7 +110,7 @@ If you haven't written a markdown file yet, [click here for a rundown](https://g
 3. Create another Node app called `bamazonSupervisor.js`. Running this application will list a set of menu options:
 
    * View Product Sales by Department
-   
+
    * Create New Department
 
 4. When a supervisor selects `View Product Sales by Department`, the app should display a summarized table in their terminal/bash window. Use the table below as a guide.
