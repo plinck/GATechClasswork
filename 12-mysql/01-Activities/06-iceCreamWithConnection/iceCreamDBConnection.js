@@ -7,15 +7,24 @@ var connection = mysql.createConnection({
   port: 3306,
 
   // Your username
-  user: "root",
+  user: "plinck",
 
   // Your password
-  password: "",
+  password: "madipaul",
   database: "ice_creamDB"
 });
 
 connection.connect(function(err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
-  connection.end();
+  getPoducts();
 });
+
+function getPoducts() {
+  connection.query("SELECT * FROM products", function(err, res) {
+    if (err) throw err;
+    console.log(res);
+    connection.end();
+  });
+}
+
