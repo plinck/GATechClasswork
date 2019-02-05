@@ -1,0 +1,14 @@
+{
+  "name": "10-classrooms",
+  "version": "1.0.0",
+  "description": "* In this activity we are going to make two constructors in two different files in which one constructor calls upon the other within it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.2.2"
+  }
+}
