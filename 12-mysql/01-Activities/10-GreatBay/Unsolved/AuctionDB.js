@@ -4,14 +4,16 @@ class AuctionDB {
 
   // hard code for now
   constructor() {
-    let config = {host: "localhost",
-    port: 3306,
-    user: "plinck",
-    password: "madipaul",
-    database: "auctionDB"};
+    let config = {
+      host: "localhost",
+      port: 3306,
+      user: "plinck",
+      password: "madipaul",
+      database: "auctionDB"
+    };
 
-    this.connection = mysql.createConnection( config );
-}
+    this.connection = mysql.createConnection(config);
+  }
 
   // generic connect
   connect() {
@@ -30,9 +32,9 @@ class AuctionDB {
   // connect and get to test
   getAuctionItems() {
     this.connection.query("SELECT * FROM auctionItems", function (err, res) {
-        if (err) throw err;
-        console.log(res);
-      });
+      if (err) throw err;
+      console.log(res);
+    });
   }
 }
 
