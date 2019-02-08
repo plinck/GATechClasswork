@@ -13,7 +13,10 @@ CREATE TABLE auctionItems (
   PRIMARY KEY (id)
 );
 
-### Alternative way to insert more than one row
-INSERT INTO auctionItems (name, description, price, quantity)
-VALUES ("bike", "Specialized Tarmac Disc", 5000.00, 1), ("shoes", "Hoka One One Shoes", 100.00, 1);
+CREATE TABLE bids (
+  item_id INT NOT NULL,
+  highBid DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (item_id)
+);
+
 
