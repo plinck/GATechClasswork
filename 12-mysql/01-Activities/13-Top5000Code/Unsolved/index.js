@@ -40,10 +40,10 @@ function artistMoreThanOnce() {
 function songRange() {
     const question = [{
         name: 'lowRange',
-        message: '\n\nLow Range?',
+        message: '\n\nLow Rank Range?',
     }, {
         name: 'upRange',
-        message: '\n\nUpper Range?',
+        message: '\n\nUpper Rank Range?',
     }];
 
     inquirer.prompt(question).then(answer => {
@@ -76,39 +76,30 @@ function songSpecific() {
     });
 }
 
+function exitProgram() {
+    console.log("BYE!");
+    database.close();
+}
 // Main menu
 function mainMenu() {
+
+    const menuItems = {
+        "Find Songs By Artist": songsByArtist,
+        "Find All Artists appear more than once": artistMoreThanOnce,
+        "Find data within a specific range": songRange,
+        "Search for specific song": songSpecific,
+        "QUIT": exitProgram
+    };
+
     const question = {
         type: 'list',
         name: 'mainMenu',
         message: '\n\nWhat view do you want?',
-        choices: ["Find Songs By Artist",
-            "Find All Artists appear more than once",
-            "Find data within a specific range",
-            "Search for specific song",
-            "QUIT"
-        ]
+        choices: Object.keys(menuItems)
     };
 
     inquirer.prompt(question).then(answer => {
-        switch (answer.mainMenu) {
-            case "Find Songs By Artist":
-                songsByArtist();
-                break;
-            case "Find All Artists appear more than once":
-                artistMoreThanOnce();
-                break;
-            case "Find data within a specific range":
-                songRange();
-                break;
-            case "Search for specific song":
-                songSpecific();
-                break;
-            case "QUIT":
-                console.log("BYE!");
-                database.close();
-                break;
-        }
+        menuItems[answer.mainMenu]();
     });
 }
 
