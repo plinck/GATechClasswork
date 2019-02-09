@@ -1,11 +1,13 @@
+-- Drops the animals_db if it exists currently --
 DROP DATABASE IF EXISTS music_db;
 CREATE DATABASE music_db;
 
+-- Makes it so all of the following code will affect animals_db --
 USE music_db;
 
--- Creates the table
+-- Creates the table "people" within animals_db --
 CREATE TABLE top100Songs (
-  song_rank int not null,
+  rank int not null,
   artist varchar(255) not null,
   song varchar(255) not null,
   songYear integer(4),
@@ -14,11 +16,11 @@ CREATE TABLE top100Songs (
   raw_uk DECIMAL(10,4) NULL,
   raw_eur DECIMAL(10,4) NULL,
   raw_row DECIMAL(10,4) NULL,
-  primary key (song_rank)
+  primary key (rank)
 );
 
 CREATE TABLE topAlbums (
-  album_rank int not null,
+  rank int not null,
   artist varchar(255) not null,
   album varchar(255) not null,
   albumYear integer(4),
@@ -27,11 +29,11 @@ CREATE TABLE topAlbums (
   raw_uk DECIMAL(10,4) NULL,
   raw_eur DECIMAL(10,4) NULL,
   raw_row DECIMAL(10,4) NULL,
-  primary key (album_rank)
+  primary key (rank)
 );
 
 CREATE TABLE topSongs (
-  song_rank int not null,
+  rank int not null,
   artist varchar(255) not null,
   song varchar(255) not null,
   songYear integer(4),
@@ -40,7 +42,7 @@ CREATE TABLE topSongs (
   raw_uk DECIMAL(10,4) NULL,
   raw_eur DECIMAL(10,4) NULL,
   raw_row DECIMAL(10,4) NULL,
-  primary key (song_rank)
+  primary key (rank)
 );
 
 -- INSERT INTO top100songs (rank, artist, song, songYear, rating1, rating2,rating3,rating4,rating5)
