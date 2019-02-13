@@ -33,8 +33,12 @@ function handleRequest(req, res) {
   // When the server receives data...
   req.on("data", function (data) {
 
-    console.log("You did a", req.method, "with the data:\n", data);
+    console.log("You did a", req.method, "with the data:\n", data.toString());
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
     res.end();
+
   });
 
 }
