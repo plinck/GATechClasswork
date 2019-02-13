@@ -1,0 +1,11 @@
+{
+  "name": "02-two-servers",
+  "version": "1.0.0",
+  "description": "* Using the previous example as a guide, create an app that has two web servers: one that listens on port 7000 and one that listens on port 7500.",
+  "main": "server1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
