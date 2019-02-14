@@ -32,11 +32,18 @@ app.get("/", function(req, res) {
   res.send("Welcome to the Star Wars Page!");
 });
 
+// Using "/:" allows it to be a variable/parameter vs hardcode name for route
 app.get("/:character", function(req, res) {
   var chosen = req.params.character;
 
-  // What does this log?
+  // What does this log? 
+  // A: it logs whatever you send after the /
   console.log(chosen);
+  characters.forEach( char => {
+    if (char.routeName == chosen) {
+      res.json(char);
+    }
+  });
 
   res.end();
 });

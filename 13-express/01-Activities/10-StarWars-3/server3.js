@@ -40,12 +40,15 @@ app.get("/api/characters", function(req, res) {
 });
 
 // What does this route do?
+// logs a specific character that is sent in the url parm e.g. "localhost:3000/api/characters/yoda"
 app.get("/api/characters/:character", function(req, res) {
-  // What does this code do?
+  // What does this code do? ==> logs a specific character that is sent in the urlparm e.g. "localhost:3000/api/characters/yoda"
   var chosen = req.params.character;
   console.log(chosen);
 
+
   // What does this code do?
+  // Finds the char with the routeName that matches route name sent in URL
   for (var i = 0; i < characters.length; i++) {
     if (chosen === characters[i].routeName) {
       return res.json(characters[i]);

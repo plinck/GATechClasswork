@@ -47,6 +47,10 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
+app.get("/addChar", function(req, res) {
+  res.sendFile(path.join(__dirname, "addChar.html"));
+});
+
 // Displays all characters
 app.get("/api/characters", function(req, res) {
   return res.json(characters);
@@ -74,6 +78,7 @@ app.post("/api/characters", function(req, res) {
   var newcharacter = req.body;
 
   console.log(newcharacter);
+  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
   // We then add the json the user sent to the character array
   characters.push(newcharacter);
