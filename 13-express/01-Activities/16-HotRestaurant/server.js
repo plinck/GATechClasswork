@@ -12,6 +12,13 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// The app.use is so we can use statiuc directories in express - it tells express where to look
+// first parameter is the mount point, second is the location in the file system
+// This tells express the static dir we will use for the files vs embedding it
+// directly in the HTML, so in the html file, we can use :
+//   <script src="client/assets/js/tables.js" type="text/javascript"></script>
+app.use("/client", express.static(__dirname + "/client"));
+
 // Tables
 // =============================================================
 var tables = [
@@ -52,15 +59,15 @@ var waitlist = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "client/index.html"));
 });
 
 app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+  res.sendFile(path.join(__dirname, "client/tables.html"));
 });
 
 app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+  res.sendFile(path.join(__dirname, "client/reserve.html"));
 });
 
 // Displays all tables
