@@ -29,15 +29,7 @@ var tables = [
     customerName: "Paul Linck",
     customerEmail: "paul@linck.net",
     phoneNumber: "404-555-1212"
-  },
-  {
-    routeName: "table2",
-    number: "Table #2",
-    customerID: "",
-    customerName: "",
-    customerEmail: "",
-    phoneNumber: ""
-  },
+  }
 ];
 var waitlist = [
   {
@@ -104,16 +96,20 @@ app.post("/api/tables", function(req, res) {
   if (tables.length < 5) {
     newTable.routeName = (`table${tables.length}`)
     newTable.routeName = newTable.routeName.replace(/\s+/g, "").toLowerCase();
+
     newTable.number = (`Table #${tables.length}`);
     newTable.customerName = newReservation.customerName;
     newTable.phoneNumber = newReservation.phoneNumber;
     newTable.customerEmail = newReservation.customerEmail;
     newTable.customerID = newReservation.customerID;
+
     console.log(newTable);
     tables.push(newTable);
+
     res.json(newTable);
   } else {
     waitlist.push(newReservation);
+    
     res.json(newReservation);
   }
 });
