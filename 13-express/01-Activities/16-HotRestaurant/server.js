@@ -17,7 +17,7 @@ app.use(express.json());
 // This tells express the static dir we will use for the files vs embedding it
 // directly in the HTML, so in the html file, we can use :
 //   <script src="client/assets/js/tables.js" type="text/javascript"></script>
-app.use("/client", express.static(__dirname + "/client"));
+app.use("/public", express.static(__dirname + "/public"));
 
 // Tables
 // =============================================================
@@ -72,7 +72,7 @@ app.get("/api/waitlist", function(req, res) {
   return res.json(waitlist);
 });
 
-// Displays a single character, or returns false
+// Displays a single table, or returns false
 app.get("/api/tables/:table", function(req, res) {
   var table = req.params.table;
 
