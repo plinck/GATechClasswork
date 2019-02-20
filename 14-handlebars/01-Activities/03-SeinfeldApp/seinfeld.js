@@ -59,6 +59,54 @@ app.get("/cast", function(req, res) {
   });
 });
 
+app.get("/coolness-chart", function(req, res) {
+  connection.query(`
+  SELECT * FROM actors
+  ORDER BY coolness_points
+  `, function(err, result) {
+
+    var html = `<h1> Seinfeld Actors by coolness </h1>`;
+
+    html += `<ul>`;
+
+    // We then use the retrieved records from the database to populate our HTML file.
+    for (var i = 0; i < result.length; i++) {
+      html += `<li>`;
+      html += `<p>ID:${result[i].id}</p>`;
+      html += `<p>Name:${result[i].name}</p>`;
+      html += `</li>`;
+    }
+    html += `</ul>`;
+
+    res.send(html);
+  });
+});
+
+app.get("/attitude-chart/:att", function(req, res) {
+  let attitude = req.params.att;
+
+  connection.query(`
+  SELECT * FROM actors
+  WHERE attitude = "${attitude}"
+  `, function(err, result) {
+
+    var html = `<h1> Seinfeld Actors by lazy </h1>`;
+
+    html += `<ul>`;
+
+    // We then use the retrieved records from the database to populate our HTML file.
+    for (var i = 0; i < result.length; i++) {
+      html += `<li>`;
+      html += `<p>ID:${result[i].id}</p>`;
+      html += `<p>Name:${result[i].name}</p>`;
+      html += `</li>`;
+    }
+    html += `</ul>`;
+
+    res.send(html);
+  });
+});
+
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
   // Log (server-side) when our server has started

@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS seinfeld_db;
 CREATE DATABASE seinfeld_db;
 USE seinfeld_db;
 
--- Created the table "schools" 
+-- Created the table "actors" 
 CREATE TABLE actors
 (
   id int AUTO_INCREMENT,
