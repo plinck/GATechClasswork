@@ -1,3 +1,5 @@
+USE parties_db;
+
 INSERT INTO clients (client_name) VALUES ('Bilal');
 INSERT INTO clients (client_name) VALUES ('Brianne');
 INSERT INTO clients (client_name) VALUES ('Vincent');
