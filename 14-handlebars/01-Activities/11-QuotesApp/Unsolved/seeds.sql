@@ -1,3 +1,5 @@
+use quotes_db;
+
 INSERT INTO quotes (quote, author) VALUES ('Know your "why" in any of your endeavors. That will push you through any wall you hit.', 'Albert Bahia');
 
 INSERT INTO quotes (quote, author) VALUES ('In any moment of decision, the best thing you can do is the right thing, the next best thing is the wrong thing, and the worst thing you can do is nothing.', "Theodore Roosevelt");
