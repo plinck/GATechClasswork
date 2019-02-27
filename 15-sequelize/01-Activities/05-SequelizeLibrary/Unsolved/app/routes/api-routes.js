@@ -4,7 +4,8 @@
 
 // Dependencies
 // =============================================================
-var Book = require("../models/book.js");
+let Book = require("../models/book.js");
+let Person = require("../models/person.js");
 
 
 // Routes
@@ -12,8 +13,12 @@ var Book = require("../models/book.js");
 module.exports = function(app) {
 
   // Add sequelize code to get all books and return them as JSON
-  app.get("/api/all", function(req, res) {
-
+  app.get("/api/all", (req, res) => {
+    Book.findAll({})
+    .then(results => {
+      console.log(results);
+      res.json(results);
+    });
   });
 
   // Add sequelize code to get a specific book and return it as JSON
