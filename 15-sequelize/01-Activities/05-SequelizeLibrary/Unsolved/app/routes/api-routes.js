@@ -20,7 +20,7 @@ module.exports = function (app) {
     app.get("/api/all", (req, res) => {
         Book.findAll({})
             .then(results => {
-                console.log(results.dataValues);
+                console.log(JSON.stringify(results, null, 4));
                 res.json(results);
             });
     });
@@ -36,7 +36,7 @@ module.exports = function (app) {
             })
             .then(results => {
                 if (results) {
-                    console.log(results.dataValues);
+                    console.log(JSON.stringify(results, null, 4));
                     res.json(results);
                 }
             });
@@ -52,7 +52,7 @@ module.exports = function (app) {
                 }
             })
             .then(results => {
-                console.log(results.dataValues);
+                console.log(JSON.stringify(results, null, 4));
                 res.json(results);
             });
 
@@ -68,7 +68,7 @@ module.exports = function (app) {
                 }
             })
             .then(results => {
-                console.log(results.dataValues);
+                console.log(JSON.stringify(results, null, 4));
                 res.json(results);
             });
     });
@@ -88,7 +88,7 @@ module.exports = function (app) {
                 }
             })
             .then(results => {
-                console.log(results.dataValues);
+                console.log(JSON.stringify(results, null, 4));
                 res.json(results);
             });
     });
@@ -108,7 +108,7 @@ module.exports = function (app) {
                 }
             })
             .then(results => {
-                console.log(results.dataValues);
+                console.log(JSON.stringify(results, null, 4));
                 res.json(results);
             });
     });
