@@ -1,0 +1,28 @@
+Using Local DB
+App listening on PORT 8080
+Executing (default): CREATE TABLE IF NOT EXISTS `books` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `author` VARCHAR(255), `genre` VARCHAR(255), `pages` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): CREATE TABLE IF NOT EXISTS `people` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255), `age` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+Executing (default): SHOW INDEX FROM `books`
+Executing (default): SHOW INDEX FROM `people`
+Executing (default): INSERT INTO `books` (`id`,`title`,`author`,`genre`,`pages`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Pauls Long Book','Paul Linck','Facts','2500','2019-02-28 14:58:13','2019-02-28 14:58:13');
+{ id: 2,
+  title: 'Pauls Long Book',
+  author: 'Paul Linck',
+  genre: 'Facts',
+  pages: '2500',
+  updatedAt: 2019-02-28T14:58:13.481Z,
+  createdAt: 2019-02-28T14:58:13.481Z }
+Executing (default): SELECT `id`, `title`, `author`, `genre`, `pages`, `createdAt`, `updatedAt` FROM `books` AS `books`;
+undefined
+Executing (default): SELECT `id`, `title`, `author`, `genre`, `pages`, `createdAt`, `updatedAt` FROM `books` AS `books`;
+undefined
+Executing (default): INSERT INTO `books` (`id`,`title`,`author`,`genre`,`pages`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'Pauls Short Book','Paul Linck','Facts','45','2019-02-28 14:59:28','2019-02-28 14:59:28');
+{ id: 3,
+  title: 'Pauls Short Book',
+  author: 'Paul Linck',
+  genre: 'Facts',
+  pages: '45',
+  updatedAt: 2019-02-28T14:59:28.526Z,
+  createdAt: 2019-02-28T14:59:28.526Z }
+Executing (default): SELECT `id`, `title`, `author`, `genre`, `pages`, `createdAt`, `updatedAt` FROM `books` AS `books`;
+undefined
