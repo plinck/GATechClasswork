@@ -29,7 +29,7 @@ module.exports = function(app) {
     db.Todo.create({
       text: req.body.text,
       complete: req.body.complete
-    }).then(function(dbTodo) {
+    }).then((dbTodo) => {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbTodo);
     });
@@ -40,6 +40,14 @@ module.exports = function(app) {
   app.delete("/api/todos/:id", function(req, res) {
     // Use the sequelize destroy method to delete a record from our table with the
     // id in req.params.id. res.json the result back to the user
+    let id = req.params.id;
+
+    db.Todo.destroy({
+      where: {id: id}
+    }).then( () => {
+      // We have access to the new todo as an argument inside of the callback function
+      res.end();
+    });
 
   });
 
@@ -47,5 +55,17 @@ module.exports = function(app) {
   app.put("/api/todos", function(req, res) {
     // Use the sequelize update method to update a todo to be equal to the value of req.body
     // req.body will contain the id of the todo we need to update
+    let todo = req.body;
+    console.log(todo);
+
+    db.Todo.update(
+      todo,
+      {where: {id: todo.id}})
+      .then( () => {
+      // We have access to the new todo as an argument inside of the callback function
+      res.end();
+    });
+
+
   });
 };

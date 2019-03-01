@@ -4,11 +4,12 @@
 // but no more than 140 characters
 
 // Add a flag for complete so that it's false by default if not given a value
+const Sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
   var Todo = sequelize.define("Todo", {
-    text: DataTypes.STRING,
-    complete: DataTypes.BOOLEAN
+    text: { type: Sequelize.STRING, allowNull: false, validate: { len: [1,140]}},
+    complete: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false }
   });
   return Todo;
 };

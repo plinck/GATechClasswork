@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+let db = require("./models");
 
 // Sets up the Express App
 // =============================================================
@@ -24,6 +25,10 @@ require("./routes/api-routes.js")(app);
 
 // Starting our Express app
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+// sync all tables before starting to listen
+db.sequelize.sync()
+.then( () => {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });  
 });
