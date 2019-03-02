@@ -47,7 +47,6 @@ module.exports = function (app) {
             .then(function (dbTodo) {
                 res.json(dbTodo);
             });
-
     });
 
     // PUT route for updating todos. We can get the updated todo data from req.body
