@@ -1,0 +1,8 @@
+use lessondb
+debugger
+db.places.insert({"continent": "Africa", "country": "Morocco", "majorcities": ["Casablanca", "Fez", "Marrakech"]})
+db.places.find().pretty()
+db.places.find({"continent":"Africa"}).pretty()
+db.places.find({"majorcities":"Fez"}).pretty()
+db.places.find({"majorcities":"Fe"}).pretty()
+db.places.find({_id:ObjectId("5c8d865f22e0179f4a43eb3a")}).pretty()

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-us" data-reactroot="" data-reactid="1" data-react-checksum="230558653"><head data-reactid="2"><script type="text/javascript" data-reactid="3">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PK6ZQH');</script><meta name="fragment" content="!" data-reactid="4"/><script type="text/javascript" data-reactid="5">var __serializedAnubisCache = {}</script><script type="text/javascript" data-reactid="6"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.0.1/base64.min.js" data-reactid="7"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/html5-history-api/4.2.8/history.min.js" data-reactid="8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.6.9/bodymovin.min.js" data-reactid="9"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js" data-reactid="10"></script><script src="https://accounts.athlinks.com/auth/js/keycloak.js" data-reactid="11"></script><script type="text/javascript" data-reactid="12">var keycloakConfig = {"realm":"athlinks","auth-server-url":"https://accounts.athlinks.com/auth","ssl-required":"external","resource":"www","public-client":true,"clientId":"www","url":"https://accounts.athlinks.com/auth"}</script><script data-reactid="13">
+    // Polyfill CustomEvent for IE <= 11
+    (function () {
+
+      if ( typeof window.CustomEvent === "function" ) return false;
+
+      function CustomEvent ( event, params ) {
+        params = params || { bubbles: false, cancelable: false, detail: undefined };
+        var evt = document.createEvent( 'CustomEvent' );
+        evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+        return evt;
+      }
+
+      CustomEvent.prototype = window.Event.prototype;
+
+      window.CustomEvent = CustomEvent;
+    })();
+
+      var kc = window.kc = new Keycloak(window.keycloakConfig);
+      kc.onAuthSuccess = function (x) {
+        
+        var event = new CustomEvent('keycloakStateUpdate');
+        event.data = x;
+        window.dispatchEvent(event);
+      };
+      kc.onAuthRefreshSuccess = function (x) {
+        ;
+        var event = new CustomEvent('keycloakStateUpdate');
+        event.data = x;
+        window.dispatchEvent(event);
+      };
+      kc.onAuthLogout = function (x) {
+        ;
+        var event = new CustomEvent('keycloakStateUpdate');
+        event.data = x;
+        window.dispatchEvent(event);
+      };
+      kc.onAuthError = function (x) {
+        ;
+        var event = new CustomEvent('keycloakInitError');
+        event.data = x;
+        window.dispatchEvent(event);
+      }
+
+      window.onload = function() {
+        kc.init({ 'onLoad': "check-sso", checkLoginIframe: true })
+          .success(function(x) {
+            kc.initialized = true;
+            ;
+            var event = new CustomEvent('keycloakStateUpdate');
+            event.data = x;
+            window.dispatchEvent(event);
+          })
+          .error(function(e) {
+            kc.initialized = true;
+            ;
+            var event = new CustomEvent('keycloakInitError');
+            event.data = x;
+            window.dispatchEvent(event);
+          });
+      };
+    </script><script type="text/javascript" data-reactid="14">var isNotPrerender = true</script></head><body data-reactid="15"><noscript data-reactid="16"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PK6ZQH" height="0" width="0" style="display:none;visibility:hidden;" data-reactid="17"></iframe></noscript><div id="content" data-reactid="18"></div><script src="/config.js" charset="UTF-8" type="text/javascript" data-reactid="19"></script><script src="https://cdn.athlinks.com/dist/main.js" charset="UTF-8" type="text/javascript" data-reactid="20"></script></body></html>
+[]

@@ -1,0 +1,67 @@
+ db
+test
+> use classroom
+switched to db classroom
+> db.classroom.insert({"name":"Paul", rownumber:2, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
+WriteResult({ "nInserted" : 1 })
+> db.classroom.find(rownumber:2)
+2019-03-16T19:37:48.436-0400 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:27
+> db.classroom.find({rownumber:2})
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
+> db.classroom.insert({"name":"Jim", rownumber:1, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
+WriteResult({ "nInserted" : 1 })
+> db.classroom.find({rownumber:2})
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
+> db.classroom.find()
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
+> 
+> use lessondb
+switched to db lessondb
+> db.places.update({country:"Morocco"}, {$set:{continent:"Antarctica"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.places.update({country:"Morocco"}, {$set:{continent:"Antarctica"}, {multi: true}})
+2019-03-16T19:43:18.726-0400 E QUERY    [js] SyntaxError: invalid property id @(shell):1:70
+> db.places.update({country:"Morocco"}, {$set:{continent:"Antarctica"}}, {multi: true})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 0 })
+> db.places.insert({continent:"Africa", "country": "Morocco", "majorcities":["Casablanca", "Fez", "Marrakech"]}})
+2019-03-16T19:45:09.699-0400 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:109
+> db.places.insert({continent:"Africa", "country": "Morocco", "majorcities":["Casablanca", "Fez", "Marrakech"]})
+WriteResult({ "nInserted" : 1 })
+> db.places.update({country:"Morocco", {$set: {capital: "Rabat"}}})
+2019-03-16T19:46:32.917-0400 E QUERY    [js] SyntaxError: invalid property id @(shell):1:37
+> db.places.update({country:"Morocco"}, {$set: {capital: "Rabat"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.places.find().pretty()
+{
+        "_id" : ObjectId("5c8d865f22e0179f4a43eb3a"),
+        "continent" : "Antarctica",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech"
+        ],
+        "capital" : "Rabat"
+}
+{
+        "_id" : ObjectId("5c8d8a8d781fd009a6b46023"),
+        "continent" : "Africa",
+        "country" : "Morocco",
+        "majorcities" : [
+                "Casablanca",
+                "Fez",
+                "Marrakech"
+        ]
+}
+> db.places.update({country:"Morocco"}, {$push: {"majorcities": "Agadir"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.places.delete({continent:"Africa"})
+2019-03-16T19:49:09.953-0400 E QUERY    [js] TypeError: db.places.delete is not a function :
+@(shell):1:1
+> db.places.remove({continent:"Africa"})
+WriteResult({ "nRemoved" : 1 })
+> db.places.drop()
+true
+> db.dropDatabase()
+{ "dropped" : "lessondb", "ok" : 1 }
+> 
