@@ -79,6 +79,37 @@ app.get("/weight", function(req, res) {
   });
 });
 
+app.get("/numlegs", function(req, res) {
+  // Query: In our database, go to the animals collection, then "find" everything,
+  // but this time, sort it by weight (-1 means descending order)
+  db.animals.find().sort({ numlegs: 1 }, function(error, found) {
+    // Log any errors if the server encounters one
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the result of this query to the browser
+    else {
+      res.json(found);
+    }
+  });
+});
+
+app.get("/class", function(req, res) {
+  // Query: In our database, go to the animals collection, then "find" everything,
+  // but this time, sort it by weight (-1 means descending order)
+  db.animals.find().sort({ class: 1 }, function(error, found) {
+    // Log any errors if the server encounters one
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the result of this query to the browser
+    else {
+      res.json(found);
+    }
+  });
+});
+
+
 // Set the app to listen on port 3000
 app.listen(3000, function() {
   console.log("App running on port 3000!");

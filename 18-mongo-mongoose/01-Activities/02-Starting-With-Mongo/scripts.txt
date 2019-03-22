@@ -2,27 +2,27 @@ db
 test
 > use classroom
 switched to db classroom
-> db.classroom.insert({"name":"Paul", rownumber:2, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
+> db.students.insert({"name":"Paul", rownumber:2, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
 WriteResult({ "nInserted" : 1 })
-> db.classroom.find(rownumber:2)
+> db.students.find(rownumber:2)
 2019-03-16T19:37:48.436-0400 E QUERY    [js] SyntaxError: missing ) after argument list @(shell):1:27
-> db.classroom.find({rownumber:2})
+> db.students.find({rownumber:2})
 { "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
-> db.classroom.insert({"name":"Jim", rownumber:1, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
+> db.students.insert({"name":"Jim", rownumber:1, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "run"]})
 WriteResult({ "nInserted" : 1 })
-> db.classroom.find({rownumber:2})
+> db.students.find({rownumber:2})
 { "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
-> db.classroom.find()
+> db.students.find()
 { "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
 { "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
-> db.classroom.find({"hobbies":"ski"})
+> db.students.find({"hobbies":"ski"})
 { "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
 { "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
-> db.classroom.insert({"name":"Jim", rownumber:1, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "walk"]})
+> db.students.insert({"name":"Jim", rownumber:1, operatingsystem:"Mac", hobbies:["ski", "golf", "swim", "bike", "walk"]})
 WriteResult({ "nInserted" : 1 })
-> db.classroom.find({"hobbies":"walk"})
+> db.students.find({"hobbies":"walk"})
 { "_id" : ObjectId("5c8d892e781fd009a6b46022"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "walk" ] }
-> db.classroom.find({"hobbies":"ski"})
+> db.students.find({"hobbies":"ski"})
 { "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
 { "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run" ] }
 { "_id" : ObjectId("5c8d892e781fd009a6

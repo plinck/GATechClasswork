@@ -27,9 +27,9 @@ app.get("/", function(req, res) {
 });
 
 // All: Send JSON response with all animals
-app.get("/all", function(req, res) {
+app.get("/all", (req, res) => {
   // Query: In our database, go to the animals collection, then "find" everything
-  db.animals.find({}, function(err, data) {
+  db.animals.find({}, (err, data) => {
     // Log any errors if the server encounters one
     if (err) {
       console.log(err);
@@ -44,8 +44,50 @@ app.get("/all", function(req, res) {
 // TODO: Implement the remaining two routes
 
 // 1: Name: Send JSON response sorted by name in ascending order, e.g. GET "/name"
+app.get("/name", (req, res) => {
+  // Query: In our database, go to the animals collection, then "find" everything
+  db.animals.find({}).sort({name: 1}, (err, data) => {
+    // Log any errors if the server encounters one
+    if (err) {
+      console.log(err);
+    }
+    else {
+      // Otherwise, send the result of this query to the browser
+      res.json(data);
+    }
+  });
+});
 
-// 2: Weight: Send JSON response sorted by weight in descending order, , e.g. GET "/weight"
+
+app.get("/class", (req, res) => {
+  // Query: In our database, go to the animals collection, then "find" everything
+  db.animals.find({}).sort({class: 1}, (err, data) => {
+    // Log any errors if the server encounters one
+    if (err) {
+      console.log(err);
+    }
+    else {
+      // Otherwise, send the result of this query to the browser
+      res.json(data);
+    }
+  });
+});
+
+app.get("/numlegs", (req, res) => {
+  // Query: In our database, go to the animals collection, then "find" everything
+  db.animals.find({}).sort({numlegs: 1}, (err, data) => {
+    // Log any errors if the server encounters one
+    if (err) {
+      console.log(err);
+    }
+    else {
+      // Otherwise, send the result of this query to the browser
+      res.json(data);
+    }
+  });
+});
+
+
 
 // Set the app to listen on port 3000
 app.listen(3000, function() {

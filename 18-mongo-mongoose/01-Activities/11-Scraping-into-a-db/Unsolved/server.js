@@ -22,12 +22,12 @@ var collections = ["scrapedData"];
 
 // Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
+db.on("error", function (error) {
   console.log("Database Error:", error);
 });
 
 // Main route (simple Hello World Message)
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.send("Hello world");
 });
 
@@ -38,6 +38,21 @@ app.get("/", function(req, res) {
 // This route will retrieve all of the data
 // from the scrapedData collection as a json (this will be populated
 // by the data you scrape using the next route)
+app.get("/all", function (req, res) {
+  // Query: In our database, go to the animals collection, then "find" everything,
+  // but this time, sort it by weight (-1 means descending order)
+  db.scrapedData.find( (error, found) => {
+    // Log any errors if the server encounters one
+    if (error) {
+      console.log(error);
+    }
+    // Otherwise, send the result of this query to the browser
+    else {
+      res.json(found);
+    }
+  });
+});
+
 
 // Route 2
 // =======
@@ -48,9 +63,43 @@ app.get("/", function(req, res) {
 // into an empty array in the last class. How do you
 // push it into a MongoDB collection instead?
 
+app.get("/scrape", function (req, res) {
+
+  axios.get("https://old.reddit.com/r/webdev/").then(function (response) {
+
+    // Load the HTML into cheerio and save it to a variable
+    // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
+    var $ = cheerio.load(response.data);
+
+    // With cheerio, find each p-tag with the "title" class
+    // (i: iterator. element: the current element)
+    $("p.title").each(function (i, element) {
+
+      // Save the text of the element in a "title" variable
+      var title = $(element).text();
+
+      // In the currently selected element, look at its child elements (i.e., its a-tags),
+      // then save the values for any "href" attributes that the child elements may have
+      var link = $(element).children().attr("href");
+
+      // Save to Mongo
+      db.scrapedData.insert( {title: title,link: link},  (error, data) => {
+        console.log(data);
+
+      });
+
+    });
+
+
+  });
+  res.json({"ok":"ok"});
+
+});
+
+
 /* -/-/-/-/-/-/-/-/-/-/-/-/- */
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(3000, function () {
   console.log("App running on port 3000!");
 });

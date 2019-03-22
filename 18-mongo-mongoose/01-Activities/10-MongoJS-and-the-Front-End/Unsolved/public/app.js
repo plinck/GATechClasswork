@@ -20,9 +20,77 @@
 // by writing a function that takes in data (JSON) and creates a table body
 function displayResults(data) {
   // Add to the table here...
+  let resultsBody = $("tbody");
+  resultsBody.empty()
+  let resultsRow = "";
+
+
+  for (let i in data) {
+    resultsRow = `
+    <tr>
+      <td>${data[i].name}</td>
+      <td>${data[i].numlegs}</td>
+      <td>${data[i].class}</td>
+      <td>${data[i].weight}</td>
+      <td>${data[i].whatIwhatIWouldReallyCallIt}</td>
+    </tr>
+  `;
+    resultsBody.append(resultsRow);
+  }
+
 }
 
-$.getJSON("/all", function(data) {
+$.getJSON("/all", function (data) {
   // Call our function to generate a table body
   displayResults(data);
+});
+
+$(document).ready(function () {
+  // get all the images for this user
+  // photo info
+  $(document).on("click", "#name-sort", event => {
+    $("#animal-weight").css("color", "black");
+    $("#animal-name").css("color", "red");
+    $("#animal-class").css("color", "black");
+    $("#animal-legs").css("color", "black");
+
+    $.getJSON("/name", function (data) {
+      // Call our function to generate a table body
+      displayResults(data);
+    });
+  });
+  $(document).on("click", "#weight-sort", event => {
+    $("#animal-weight").css("color", "red");
+    $("#animal-name").css("color", "black");
+    $("#animal-class").css("color", "black");
+    $("#animal-legs").css("color", "black");
+
+    $.getJSON("/weight", function (data) {
+      // Call our function to generate a table body
+      displayResults(data);
+    });
+  });
+  $(document).on("click", "#class-sort", event => {
+    $("#animal-weight").css("color", "black");
+    $("#animal-name").css("color", "black");
+    $("#animal-class").css("color", "red");
+    $("#animal-legs").css("color", "black");
+
+    $.getJSON("/class", function (data) {
+      // Call our function to generate a table body
+      displayResults(data);
+    });
+  });
+  $(document).on("click", "#numlegs-sort", event => {
+    $("#animal-weight").css("color", "black");
+    $("#animal-name").css("color", "black");
+    $("#animal-class").css("color", "black");
+    $("#animal-legs").css("color", "red");
+
+    $.getJSON("/numlegs", function (data) {
+      // Call our function to generate a table body
+      displayResults(data);
+    });
+  });
+
 });

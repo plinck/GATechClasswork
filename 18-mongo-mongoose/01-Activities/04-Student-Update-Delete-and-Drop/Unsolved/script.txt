@@ -1,0 +1,123 @@
+db
+classroom
+> db.students.find({}).pretty
+function () {
+    this._prettyShell = true;
+    return this;
+}
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("5c8d8896781fd009a6b46020"),
+        "name" : "Paul",
+        "rownumber" : 2,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "run"
+        ]
+}
+{
+        "_id" : ObjectId("5c8d88eb781fd009a6b46021"),
+        "name" : "Jim",
+        "rownumber" : 1,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "run"
+        ]
+}
+{
+        "_id" : ObjectId("5c8d892e781fd009a6b46022"),
+        "name" : "Jim",
+        "rownumber" : 1,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "walk"
+        ]
+}
+> db.students.updateMany({}, {$push: {"hobbies", "extremebasketweaving"}})
+2019-03-19T17:02:36.392-0600 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:46
+> db.students.updateMany({}, {$push: {"hobbies": "extremebasketweaving"}})
+{ "acknowledged" : true, "matchedCount" : 3, "modifiedCount" : 3 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("5c8d8896781fd009a6b46020"),
+        "name" : "Paul",
+        "rownumber" : 2,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "run",
+                "extremebasketweaving"
+        ]
+}
+{
+        "_id" : ObjectId("5c8d88eb781fd009a6b46021"),
+        "name" : "Jim",
+        "rownumber" : 1,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "run",
+                "extremebasketweaving"
+        ]
+}
+{
+        "_id" : ObjectId("5c8d892e781fd009a6b46022"),
+        "name" : "Jim",
+        "rownumber" : 1,
+        "operatingsystem" : "Mac",
+        "hobbies" : [
+                "ski",
+                "golf",
+                "swim",
+                "bike",
+                "walk",
+                "extremebasketweaving"
+        ]
+}
+> db.students.update({"_id": ObjectId("5c8d892e781fd009a6b46022")}, {$set: {name: "Paul"}, {operatingsystem: "windows"}})
+2019-03-19T17:04:42.812-0600 E QUERY    [js] SyntaxError: invalid property id @(shell):1:90
+> db.students.find({})
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ] }
+{ "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ] }
+{ "_id" : ObjectId("5c8d892e781fd009a6b46022"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "walk", "extremebasketweaving" ] }
+> db.students.update({"_id": ObjectId("5c8d892e781fd009a6b46022")}, {$set: {name: "Paul"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({"_id": ObjectId("5c8d892e781fd009a6b46022")}, {$set: {operatingsystem: "win"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.find({})
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ] }
+{ "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ] }
+{ "_id" : ObjectId("5c8d892e781fd009a6b46022"), "name" : "Paul", "rownumber" : 1, "operatingsystem" : "win", "hobbies" : [ "ski", "golf", "swim", "bike", "walk", "extremebasketweaving" ] }
+> db.students.updateMany({}, {gaveCandy: false})
+2019-03-19T17:08:33.862-0600 E QUERY    [js] Error: the update operation document must contain atomic operators :
+DBCollection.prototype.updateMany@src/mongo/shell/crud_api.js:625:1
+@(shell):1:1
+> db.students.updateMany({}, {$set {gaveCandy: false}})
+2019-03-19T17:09:20.296-0600 E QUERY    [js] SyntaxError: missing : after property id @(shell):1:34
+> db.students.updateMany({}, {$set: {gaveCandy: false}})
+{ "acknowledged" : true, "matchedCount" : 3, "modifiedCount" : 3 }
+> db.students.updateMany({name: "Jim"}, {$set: {gaveCandy: true}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.find({})
+{ "_id" : ObjectId("5c8d8896781fd009a6b46020"), "name" : "Paul", "rownumber" : 2, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ], "gaveCandy" : false }
+{ "_id" : ObjectId("5c8d88eb781fd009a6b46021"), "name" : "Jim", "rownumber" : 1, "operatingsystem" : "Mac", "hobbies" : [ "ski", "golf", "swim", "bike", "run", "extremebasketweaving" ], "gaveCandy" : true }
+{ "_id" : ObjectId("5c8d892e781fd009a6b46022"), "name" : "Paul", "rownumber" : 1, "operatingsystem" : "win", "hobbies" : [ "ski", "golf", "swim", "bike", "walk", "extremebasketweaving" ], "gaveCandy" : false }
+> 
