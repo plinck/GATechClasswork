@@ -33,8 +33,11 @@ app.post("/submit", function(req, res) {
 
   // Update this route to run the `setFullName` and `lastUpdatedDate` methods before creating a new User
   // You must create these methods in the model.
+  let user = new User(req.body);
+  user.setFullName();
+  user.lastUpdatedDate();
 
-  User.create(req.body)
+  user.save()
     .then(function(dbUser) {
       // If saved successfully, send the the new User document to the client
       res.json(dbUser);
