@@ -8,7 +8,7 @@ In this activity we will add some new functionality to the previous form example
 
 * Update the `Form` component to add the following:
 
-  1. A new input field that updates `this.state.password`. 
+  1. A new input field that updates `this.state.password`.
   
      * Set the initial value of `this.state.password` to an empty string.
 
@@ -22,6 +22,6 @@ In this activity we will add some new functionality to the previous form example
   
   3. Do not allow the user to type in a password that is longer than 15 characters. i.e. the length of the password state should never go beyond 15 characters.
 
-### Hints 
+### Hints
 
 * You may want to look into using [String.prototype.substring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring) to prevent the password field from going beyond 15 characters.
