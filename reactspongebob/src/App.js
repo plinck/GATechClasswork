@@ -26,11 +26,10 @@ class App extends React.Component {
   }
 
   deleteFriend = (id) => {
-    let newFriends = this.state.friends.filter( item => {
-      return (item.id !== id ? item : null);
-    })
+    let newFriends = this.state.friends.filter( item => item.id !== id);
+      //return (item.id !== id ? item : null);
+      // filter aloows you to do this
     this.setState({friends: newFriends});
-
   }
 
   render() {
